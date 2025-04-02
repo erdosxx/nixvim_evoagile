@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   plugins.nvim-tree = {
     enable = true;
     disableNetrw = true;
@@ -238,7 +238,7 @@
       number = false;
       relativenumber = false;
     };
-    trash = { cmd = "trash"; };
+    trash = { cmd = "${pkgs.trash-cli}/bin/trash"; };
     actions = {
       openFile = { quitOnOpen = false; };
       windowPicker = { enable = false; };
