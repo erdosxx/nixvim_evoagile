@@ -145,7 +145,7 @@
         {
           mode = "n";
           key = "<localleader>o";
-          action = "<CMD>JuliaREPLConnect 2345<CR>";
+          action = "<CMD>JuliaREPLConnect! 2345<CR>";
           options = {
             silent = true;
             noremap = true;
@@ -154,7 +154,7 @@
         {
           mode = "n";
           key = "<localleader>u";
-          action = "<CMD>JuliaREPLSend<CR>";
+          action = "<CMD>JuliaREPLSend!<CR>";
           options = {
             silent = true;
             noremap = true;
@@ -163,7 +163,7 @@
         {
           mode = "v";
           key = "<localleader>u";
-          action = ":JuliaREPLSend<CR>";
+          action = ":JuliaREPLSend!<CR>";
           options = {
             silent = true;
             noremap = true;
@@ -172,7 +172,7 @@
         {
           mode = "v";
           key = "<localleader>k";
-          action = ":JuliaREPLSendRegion<CR> <cmd>normal! `><CR>";
+          action = ":JuliaREPLSendRegion!<CR> <cmd>normal! `><CR>";
           options = {
             silent = true;
             noremap = true;
@@ -181,7 +181,7 @@
         {
           mode = "n";
           key = "<localleader>/";
-          action = "%:Format<CR>v%:JuliaREPLSend<CR>%$";
+          action = "%:Format<CR>v%:JuliaREPLSend!<CR>%$";
           options = {
             silent = true;
             remap = true;
