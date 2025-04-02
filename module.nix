@@ -1,5 +1,5 @@
 # module.nix
-{ inputs, nixpkgs-unfree, ... }: {
+{ inputs, pkgs, nixpkgs-unfree, ... }: {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 
   programs.nixvim = {
@@ -8,7 +8,7 @@
     # Additional NixVim settings can go here
     imports = [
       (import ./config {
-        inherit nixpkgs-unfree;
+        inherit pkgs nixpkgs-unfree;
       }) # Your existing configuration
     ];
   };
