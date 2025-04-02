@@ -25,13 +25,10 @@
               inherit system;
               config.allowUnfree = true;
             };
+            pkgs = inputs.nixpkgs.legacyPackages.${system};
           in {
-            imports = [
-              (import ./module.nix {
-                inherit inputs nixpkgs-unfree;
-                inherit (config.nixpkgs.system) pkgs;
-              })
-            ];
+            imports =
+              [ (import ./module.nix { inherit inputs nixpkgs-unfree pkgs; }) ];
           };
       };
 
