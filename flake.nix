@@ -18,11 +18,17 @@
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
       # Add this new section
-      flake = {
-        homeManagerModules = {
-          default = import ./module.nix { inherit inputs; };
+      flake = { system, ... }:
+        let
+          nixpkgs-unfree = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in {
+          homeManagerModules = {
+            default = import ./module.nix { inherit inputs nixpkgs-unfree; };
+          };
         };
-      };
 
       perSystem = { system, ... }:
         let
