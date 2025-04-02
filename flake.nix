@@ -24,9 +24,10 @@
             inherit system;
             config.allowUnfree = true;
           };
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
         in {
           homeManagerModules = {
-            default = import ./module.nix { inherit inputs nixpkgs-unfree; };
+            default = import ./module.nix { inherit inputs nixpkgs-unfree pkgs; };
           };
         };
 

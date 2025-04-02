@@ -8,7 +8,6 @@
     # Additional NixVim settings can go here
     imports = [
       (import ./config {
-        inherit (inputs) pkgs;
         inherit nixpkgs-unfree;
       }) # Your existing configuration
     ];
