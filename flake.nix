@@ -4,7 +4,8 @@
   inputs = {
     nixvim = {
       # url = "github:nix-community/nixvim";
-      url = "github:nix-community/nixvim?rev=754b8df7e37be04b7438decee5a5aa18af72cbe1";
+      url =
+        "github:nix-community/nixvim?rev=754b8df7e37be04b7438decee5a5aa18af72cbe1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
@@ -15,6 +16,13 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+
+      # Add this new section
+      flake = {
+        homeManagerModules = {
+          default = import ./module.nix { inherit inputs; };
+        };
+      };
 
       perSystem = { system, ... }:
         let
