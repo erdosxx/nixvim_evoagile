@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-unfree, ... }:
 
 let
   # let julia = "${pkgs.julia}/bin/julia";
@@ -14,7 +14,7 @@ in {
     ./plugins/illuminate.nix
     ./options.nix
     ./keymaps.nix
-    ./cmp.nix
+    (import ./cmp.nix { inherit nixpkgs-unfree; })
   ];
 
   colorschemes.tokyonight.enable = true;
