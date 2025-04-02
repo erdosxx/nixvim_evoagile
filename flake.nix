@@ -17,19 +17,23 @@
       systems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-      flake = let
-        system = "x86_64-linux";
-        nixpkgs-unfree = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
-      in {
-        homeManagerModules.default = { ... }: {
-          imports = [
-            (import ./module.nix { inherit inputs pkgs nixpkgs-unfree; })
-          ];
-        };
+      flake = {
+        homeManagerModules.default = { config, ... }:
+          let
+            system = "x86_64-linux";
+            nixpkgs-unfree = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          in {
+            imports = [
+              (import ./module.nix {
+                inherit inputs;
+                inherit (config.nixpkgs) pkgs;
+                inherit nixpkgs-unfree system;
+              })
+            ];
+          };
       };
 
       perSystem = { system, ... }:
