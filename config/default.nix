@@ -339,7 +339,6 @@ in {
         dockerls.enable = true;
         r_language_server = {
           enable = true;
-          package = pkgs.rPackages.languageserver;
         };
         julials = {
           enable = true;
