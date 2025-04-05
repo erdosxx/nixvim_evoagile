@@ -340,6 +340,8 @@ in {
         r_language_server = {
           enable = true;
           package = null;
+          cmd = [ "R" "--slave" "-e" "languageserver::run()" ];
+          filetypes = [ "r" "rmd" ];
         };
         julials = {
           enable = true;
