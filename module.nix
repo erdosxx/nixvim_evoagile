@@ -1,4 +1,3 @@
-# module.nix
 { inputs, nixpkgs-unfree, pkgs, ... }: {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 

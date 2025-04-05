@@ -337,6 +337,10 @@ in {
         cmake.enable = true;
         bashls.enable = true;
         dockerls.enable = true;
+        r_language_server = {
+          enable = true;
+          package = pkgs.vimPlugins.coc-r-lsp;
+        };
         julials = {
           enable = true;
           cmd = [
