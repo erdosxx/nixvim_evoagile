@@ -339,7 +339,7 @@ in {
         dockerls.enable = true;
         r_language_server = {
           enable = true;
-          package = pkgs.vimPlugins.coc-r-lsp;
+          package = pkgs.rPackages.languageserver;
         };
         julials = {
           enable = true;
