@@ -18,15 +18,16 @@
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
       flake = {
-        homeManagerModules.default = { config, ... }:
+        homeManagerModules.default = { pkgs, ... }:
           let
             # system = config.nixpkgs.system;
-            system = "x86_64-linux";
+            system = pkgs.system;
+            # system = "x86_64-linux";
             nixpkgs-unfree = import inputs.nixpkgs {
               inherit system;
               config.allowUnfree = true;
             };
-            pkgs = inputs.nixpkgs.legacyPackages.${system};
+            # pkgs = inputs.nixpkgs.legacyPackages.${system};
           in {
             imports =
               [ (import ./module.nix { inherit inputs nixpkgs-unfree pkgs; }) ];
