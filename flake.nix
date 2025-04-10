@@ -20,7 +20,8 @@
       flake = {
         homeManagerModules.default = { config, ... }:
           let
-            system = config.nixpkgs.system;
+            # system = config.nixpkgs.system;
+            system = "x86_64-linux";
             nixpkgs-unfree = import inputs.nixpkgs {
               inherit system;
               config.allowUnfree = true;
