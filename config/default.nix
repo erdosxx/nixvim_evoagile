@@ -1,9 +1,9 @@
 { pkgs, nixpkgs-unfree, ... }:
-
 let
   # let julia = "${pkgs.julia}/bin/julia";
   inherit (pkgs.lib) getExe;
   julia = getExe pkgs.julia-bin;
+  alejandra = getExe pkgs.alejandra;
 in {
   imports = [
     ./plugins/nvim-tree.nix
@@ -44,7 +44,8 @@ in {
     };
   };
 
-  extraConfigLua = # lua
+  extraConfigLua =
+    # lua
     ''
       vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 
@@ -81,7 +82,8 @@ in {
       desc = "Save last cusor position for reopen it with same position";
       event = "BufReadPost";
 
-      callback.__raw = # lua
+      callback.__raw =
+        # lua
         ''
           function()
             local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -96,7 +98,8 @@ in {
       desc = "Auto close nvim tree";
       event = "BufEnter";
 
-      callback.__raw = # lua
+      callback.__raw =
+        # lua
         ''
           function()
             local function is_modified_buffer_open(buffers)
@@ -122,7 +125,8 @@ in {
       event = [ "BufRead" "BufNewFile" ];
       pattern = "/tmp/calcurse*";
 
-      callback.__raw = # lua
+      callback.__raw =
+        # lua
         ''
           function()
             vim.bo.filetype = "markdown"
@@ -134,7 +138,8 @@ in {
       event = [ "BufRead" "BufNewFile" ];
       pattern = "~/localgit/myCalcurse/notes/*";
 
-      callback.__raw = # lua
+      callback.__raw =
+        # lua
         ''
           function()
             vim.bo.filetype = "markdown"
@@ -200,7 +205,6 @@ in {
     #     };
     #   };
     # };
-
 
     toggleterm = {
       enable = true;
@@ -286,6 +290,10 @@ in {
         nixd = {
           enable = true;
           package = pkgs.nixd;
+          settings = {
+            nixpkgs = { expr = "import <nixpkgs> { }"; };
+            formatting.command = [ "${alejandra}" ];
+          };
         };
         clangd = {
           enable = true;
@@ -337,6 +345,5 @@ in {
         gt = "type_definition";
       };
     };
-
   };
 }

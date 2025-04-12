@@ -13,21 +13,20 @@
   };
 
   outputs = { nixvim, flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    let
+      unfree = system:
+        import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+    in flake-parts.lib.mkFlake { inherit inputs; } {
       systems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-      flake = {
+      flake = { system, ... }: {
         homeManagerModules.default = { pkgs, ... }:
           let
-            # system = config.nixpkgs.system;
-            # system = "x86_64-linux";
-            system = pkgs.system;
-            nixpkgs-unfree = import inputs.nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            # pkgs = inputs.nixpkgs.legacyPackages.${system};
+            nixpkgs-unfree = unfree system;
           in {
             imports =
               [ (import ./module.nix { inherit inputs nixpkgs-unfree pkgs; }) ];
@@ -43,11 +42,7 @@
             module = import ./config; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
-              # inherit (inputs) foo;
-              nixpkgs-unfree = import inputs.nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-              };
+              nixpkgs-unfree = unfree system;
             };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
