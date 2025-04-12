@@ -3,9 +3,9 @@
 
   inputs = {
     nixvim = {
-      # url = "github:nix-community/nixvim";
-      url =
-        "github:nix-community/nixvim?rev=754b8df7e37be04b7438decee5a5aa18af72cbe1";
+      url = "github:nix-community/nixvim";
+      # url =
+      #   "github:nix-community/nixvim?rev=754b8df7e37be04b7438decee5a5aa18af72cbe1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";

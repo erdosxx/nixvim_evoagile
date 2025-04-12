@@ -90,12 +90,6 @@
       action = "<C-w>l";
     }
     {
-      mode = "n";
-      key = "<localleader>m";
-      action = ''
-        <cmd>lua require("harpoon.mark").add_file() vim.notify("󱡅  marked file")<cr>'';
-    }
-    {
       mode = "i";
       key = "<F2>";
       action = "<ESC>i<C-j>";

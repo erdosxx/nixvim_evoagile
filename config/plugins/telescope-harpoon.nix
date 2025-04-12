@@ -118,10 +118,26 @@
   plugins.harpoon = {
     enable = true;
     enableTelescope = true;
-    keymaps = {
-      # See keymaps.nix. 
-      #   addFile = "<localleader>m";
-      toggleQuickMenu = "<TAB>";
-    };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<TAB>";
+      action.__raw = ''
+        function()
+          require'harpoon'.ui:toggle_quick_menu(require'harpoon':list())
+        end
+      '';
+    }
+    {
+      mode = "n";
+      key = "<localleader>m";
+      action.__raw = ''
+        function()
+          require'harpoon':list():add()
+          vim.notify("󱡅  marked file")
+        end'';
+    }
+  ];
 }
