@@ -23,10 +23,9 @@
       systems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-      flake = { system, ... }: {
-        homeManagerModules.default = { pkgs, ... }:
-          let
-            nixpkgs-unfree = unfree system;
+      flake = {
+        homeManagerModules.default = { pkgs, system, ... }:
+          let nixpkgs-unfree = unfree system;
           in {
             imports =
               [ (import ./module.nix { inherit inputs nixpkgs-unfree pkgs; }) ];
@@ -41,9 +40,7 @@
             inherit system; # or alternatively, set `pkgs`
             module = import ./config; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
-            extraSpecialArgs = {
-              nixpkgs-unfree = unfree system;
-            };
+            extraSpecialArgs = { nixpkgs-unfree = unfree system; };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
         in {
