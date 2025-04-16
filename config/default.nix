@@ -6,6 +6,7 @@
     ./plugins/bufferline.nix
     ./plugins/illuminate.nix
     ./plugins/lsp.nix
+    ./plugins/lualine.nix
     ./plugins/luasnip.nix
     ./plugins/navic.nix
     ./plugins/none-ls.nix
@@ -114,7 +115,6 @@
   plugins = {
     web-devicons.enable = true;
     barbecue.enable = true;
-    lualine.enable = true;
     gitsigns.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
