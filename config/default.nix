@@ -147,6 +147,9 @@ in {
     }
   ];
 
+  # For updating treesitter.
+  extraPackages = with pkgs; [ zig ];
+
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "julia-repl-vim";
