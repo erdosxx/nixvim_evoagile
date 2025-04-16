@@ -5,6 +5,7 @@
     enable = true;
     defaultEditor = true;
     # Additional NixVim settings can go here
-    imports = [ (import ./config { inherit pkgs nixpkgs-unfree; }) ];
+    # imports = [ (import ./config { inherit pkgs nixpkgs-unfree; }) ];
+    imports = [ ./config ];
   };
 }
