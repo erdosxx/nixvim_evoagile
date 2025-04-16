@@ -5,14 +5,17 @@ let
   alejandra = getExe pkgs.alejandra;
 in {
   imports = [
-    ./plugins/nvim-tree.nix
-    ./plugins/bufferline.nix
-    ./plugins/navic.nix
     ./plugins/alpha.nix
-    ./plugins/luasnip.nix
+    ./plugins/bufferline.nix
     ./plugins/illuminate.nix
-    ./plugins/treesitter.nix
+    ./plugins/lsp.nix
+    ./plugins/luasnip.nix
+    ./plugins/navic.nix
+    ./plugins/none-ls.nix
+    ./plugins/nvim-tree.nix
     ./plugins/telescope-harpoon.nix
+    ./plugins/treesitter.nix
+    ./plugins/whichkey.nix
     ./options.nix
     ./keymaps.nix
     (import ./cmp.nix { inherit nixpkgs-unfree; })
@@ -151,16 +154,24 @@ in {
   extraPackages = with pkgs; [ zig ];
 
   extraPlugins = [
+    # (pkgs.vimUtils.buildVimPlugin {
+    #   name = "julia-repl-vim";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "erdosxx";
+    #     repo = "julia-repl-vim";
+    #     rev = "b2fc08feca51d1f6119ca291be6c7fca2fac7c45";
+    #     hash = "sha256-JwOfLBNrR7GRK5IFmeklJK4Z7NOg+6ijOomCS41r4kM=";
+    #   };
+    # })
     (pkgs.vimUtils.buildVimPlugin {
       name = "julia-repl-vim";
       src = pkgs.fetchFromGitHub {
-        owner = "erdosxx";
+        owner = "andreypopp";
         repo = "julia-repl-vim";
-        rev = "b2fc08feca51d1f6119ca291be6c7fca2fac7c45";
-        hash = "sha256-JwOfLBNrR7GRK5IFmeklJK4Z7NOg+6ijOomCS41r4kM=";
+        rev = "49dc50348df20cc54628b4599d0ce89bd07213e5";
+        hash = "sha256-M5Tx3iqCTqUxwuw7bbyJKI3sHHanZYvDrZ3r0p+LRl4=";
       };
     })
-
     (pkgs.vimUtils.buildVimPlugin {
       name = "jupyter-vim";
       src = pkgs.fetchFromGitHub {
@@ -177,7 +188,6 @@ in {
     barbecue.enable = true;
     lualine.enable = true;
     comment.enable = true;
-    which-key.enable = true;
     nvim-autopairs.enable = true;
     gitsigns.enable = true;
     rainbow-delimiters.enable = true;
@@ -232,119 +242,6 @@ in {
         };
         view_method = "zathura";
         imaps_leader = "¬";
-      };
-    };
-
-    none-ls = {
-      enable = true;
-      sources = {
-        diagnostics = {
-          mypy.enable = true;
-          yamllint.enable = true;
-          zsh.enable = true;
-        };
-
-        formatting = {
-          bibclean.enable = true;
-          black = {
-            enable = true;
-            settings = {
-              timeout = 2000;
-              extra_args = [ "--line-length" "79" "--fast" ];
-            };
-          };
-          nixfmt.enable = true;
-          prettier = {
-            enable = true;
-            disableTsServerFormatter = true;
-            settings = {
-              disabled_filetypes = [ "lua" ];
-              extra_args =
-                [ "--no-semi" "--single-quote" "--jsx-single-quote" ];
-            };
-          };
-          shfmt = {
-            enable = true;
-            settings = { extra_args = [ "-i" "2" "-ci" ]; };
-          };
-          stylua = {
-            enable = true;
-            settings = { extra_args = [ "--column-width" "79" ]; };
-          };
-          # not work
-          # just.enable = true;
-        };
-      };
-    };
-
-    lsp = {
-      enable = true;
-      servers = {
-        lua_ls = {
-          enable = true;
-          settings.format.enable = true;
-        };
-        rust_analyzer = {
-          enable = true;
-          installRustc = true;
-          installCargo = true;
-        };
-        nixd = {
-          enable = true;
-          package = pkgs.nixd;
-          settings = {
-            nixpkgs = { expr = "import <nixpkgs> { }"; };
-            formatting.command = [ "${alejandra}" ];
-          };
-        };
-        clangd = {
-          enable = true;
-          cmd = [ "clangd" "--offset-encoding=utf-16" ];
-        };
-        cmake.enable = true;
-        bashls.enable = true;
-        dockerls.enable = true;
-        r_language_server = {
-          enable = true;
-          package = null;
-          cmd = [ "R" "--slave" "-e" "languageserver::run()" ];
-          filetypes = [ "r" "rmd" ];
-        };
-        julials = {
-          enable = true;
-          cmd = [
-            "${julia}"
-            "--startup-file=no"
-            "--history-file=no"
-            "--project=~/.julia/environment/nvim-lspconfig"
-            "-e"
-            ''
-              import Pkg; Pkg.add("LanguageServer"); using LanguageServer; runserver()''
-          ];
-          # rootDir = # lua
-          #   ''
-          #     function(fname)
-          #       return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-          #     end
-          #   '';
-          package = pkgs.julia-bin;
-        };
-        # pyright.enable = true;
-        pylyzer.enable = true;
-        # Generated many error logs in ~/.local/state/nvim/lsp.log
-        # ltex.enable = true;
-        texlab = {
-          enable = true;
-          filetypes = [ "tex" ];
-        };
-      };
-
-      keymaps.lspBuf = {
-        K = "hover";
-        gD = "references";
-        gd = "definition";
-        gi = "implementation";
-        gt = "type_definition";
       };
     };
   };

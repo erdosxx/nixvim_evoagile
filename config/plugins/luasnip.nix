@@ -7,12 +7,13 @@
         history = true;
         # Enable autotriggered snippets
         enable_autosnippets = true;
-        # Use Tab (or some other key if you prefer) to trigger visual selection 
+        # Use Tab (or some other key if you prefer) to trigger visual selection
         store_selection_keys = "<C-f>";
         # Update text as you type for repeat node
         update_events = "TextChanged,TextChangedI";
       };
-      luaConfig.pre = # lua
+      luaConfig.pre =
+        # lua
         ''
           require("luasnip").config.set_config({ -- Setting LuaSnip config
           	ext_opts = {
@@ -31,7 +32,8 @@
     {
       key = "<C-f>";
       mode = [ "i" "s" ];
-      action.__raw = # lua
+      action.__raw =
+        # lua
         ''
           function()
             if require("luasnip").expand_or_jumpable() then
@@ -43,7 +45,8 @@
     {
       key = "<C-j>";
       mode = [ "i" "s" ];
-      action.__raw = # lua
+      action.__raw =
+        # lua
         ''
           function()
             if require("luasnip").jumpable(1) then
@@ -55,7 +58,8 @@
     {
       key = "<C-k>";
       mode = [ "i" "s" ];
-      action.__raw = # lua
+      action.__raw =
+        # lua
         ''
           function()
             if require("luasnip").jumpable(-1) then
@@ -67,7 +71,8 @@
     {
       key = "<C-l>";
       mode = [ "i" "s" ];
-      action.__raw = # lua
+      action.__raw =
+        # lua
         ''
           function()
             if require("luasnip").choice_active() then
@@ -79,7 +84,8 @@
     {
       key = "<C-h>";
       mode = [ "i" "s" ];
-      action.__raw = # lua
+      action.__raw =
+        # lua
         ''
           function()
             if require("luasnip").choice_active() then
