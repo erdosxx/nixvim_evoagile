@@ -14,6 +14,7 @@
     ./plugins/nvim-tree.nix
     ./plugins/project.nix
     ./plugins/telescope-harpoon.nix
+    ./plugins/toggleterm.nix
     ./plugins/treesitter.nix
     ./plugins/whichkey.nix
     ./autoCmd.nix
@@ -143,19 +144,6 @@
     #     };
     #   };
     # };
-
-    toggleterm = {
-      enable = true;
-      settings = {
-        open_mapping = "[[<c-\\>]]";
-        direction = "float";
-        float_opts = {
-          border = "curved";
-          height = 30;
-          width = 130;
-        };
-      };
-    };
 
     vimtex = {
       enable = true;
