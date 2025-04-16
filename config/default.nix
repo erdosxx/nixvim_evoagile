@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, nixpkgs-unfree, ... }: {
   imports = [
     ./plugins/alpha.nix
     ./plugins/chatgpt.nix
@@ -23,7 +23,7 @@
     ./autoCmd.nix
     ./options.nix
     ./keymaps.nix
-    ./cmp.nix
+    (import ./cmp.nix { inherit nixpkgs-unfree; })
   ];
 
   colorschemes.tokyonight.enable = true;

@@ -1,4 +1,4 @@
-{ nixpkgs-unfree, ... }: {
+{ nixpkgs-unfree }: {
   plugins = {
     cmp-buffer.enable = true;
     cmp-path.enable = true;
