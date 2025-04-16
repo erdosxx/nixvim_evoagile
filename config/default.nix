@@ -4,6 +4,7 @@
     ./plugins/comment.nix
     ./plugins/nvim-autopairs.nix
     ./plugins/bufferline.nix
+    ./plugins/gitsigns.nix
     ./plugins/illuminate.nix
     ./plugins/indent-blankline.nix
     ./plugins/lsp.nix
@@ -117,7 +118,6 @@
   plugins = {
     web-devicons.enable = true;
     barbecue.enable = true;
-    gitsigns.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
     # Error occurred for autocommand FTplugin
