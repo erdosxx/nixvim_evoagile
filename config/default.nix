@@ -5,6 +5,7 @@
     ./plugins/nvim-autopairs.nix
     ./plugins/bufferline.nix
     ./plugins/illuminate.nix
+    ./plugins/indent-blankline.nix
     ./plugins/lsp.nix
     ./plugins/lualine.nix
     ./plugins/luasnip.nix
@@ -118,7 +119,6 @@
     gitsigns.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
-    indent-blankline.enable = true;
     # Error occurred for autocommand FTplugin
     # quarto = {
     #   enable = true;
