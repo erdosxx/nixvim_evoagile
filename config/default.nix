@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./plugins/alpha.nix
+    ./plugins/chatgpt.nix
     ./plugins/conjure.nix
     ./plugins/comment.nix
     ./plugins/nvim-autopairs.nix
