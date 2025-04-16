@@ -1,6 +1,5 @@
 { pkgs, nixpkgs-unfree, ... }:
 let
-  # let julia = "${pkgs.julia}/bin/julia";
   inherit (pkgs.lib) getExe;
   julia = getExe pkgs.julia-bin;
   alejandra = getExe pkgs.alejandra;

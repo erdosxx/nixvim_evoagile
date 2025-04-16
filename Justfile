@@ -23,3 +23,6 @@ back hash:
 # Usage: just upp nixpkgs
 upp input:
   nix flake update {{input}}
+
+fmt:
+  nix fmt
