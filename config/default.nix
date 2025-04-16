@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./plugins/alpha.nix
+    ./plugins/comment.nix
     ./plugins/nvim-autopairs.nix
     ./plugins/bufferline.nix
     ./plugins/illuminate.nix
@@ -114,7 +115,6 @@
     web-devicons.enable = true;
     barbecue.enable = true;
     lualine.enable = true;
-    comment.enable = true;
     gitsigns.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
