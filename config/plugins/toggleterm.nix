@@ -104,7 +104,7 @@ in {
       	lazygit:toggle()
       end
 
-      local julia = Terminal:new({ cmd = "nix develop . && julia --project=.", hidden = true, direction = "vertical" })
+      local julia = Terminal:new({ cmd = "nix develop --command julia --project=.", hidden = true, direction = "vertical" })
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
