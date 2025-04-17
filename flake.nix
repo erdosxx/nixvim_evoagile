@@ -44,6 +44,7 @@
           extraSpecialArgs = {nixpkgs-unfree = unfree system;};
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        pkgs = unfree system;
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
@@ -58,6 +59,11 @@
 
         # Add formatter for each system
         formatter = inputs.nixpkgs.legacyPackages.${system}.alejandra;
+
+        devShells.default = pkgs.mkShell {
+          name = "nixvim-dev";
+          # buildInputs = with pkgs; [ sops age ssh-to-age ];
+        };
       };
     };
 }

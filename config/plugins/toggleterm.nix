@@ -9,7 +9,7 @@ in {
   plugins.which-key = {
     settings.spec = [
       {
-        __unkeyed-1 = "<leader>gg";
+        __unkeyed-1 = "<leader>tg";
         __unkeyed-2 = "<cmd>lua _LAZYGIT_TOGGLE()<CR>";
         desc = "Lazygit";
         nowait = true;

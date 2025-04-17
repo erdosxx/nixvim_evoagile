@@ -15,7 +15,7 @@ in {
   plugins.chatgpt = {
     enable = chatgptEnabled;
     settings = {
-      # Need to define with age encryption.
+      # api_key_cmd = sops.secrets.openai_key;
       api_key_cmd = null;
       yank_register = "+";
       edit_with_instructions = {
