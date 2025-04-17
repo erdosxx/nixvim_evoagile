@@ -1,8 +1,63 @@
-{
+{ pkgs, ... }:
+let
+  inherit (pkgs.lib) getExe;
+  lazygit = getExe pkgs.lazygit;
+  htop = getExe pkgs.htop;
+  python = getExe pkgs.python3;
+  ncdu = getExe pkgs.ncdu;
+in {
+  plugins.which-key = {
+    settings.spec = [
+      {
+        __unkeyed-1 = "<leader>gg";
+        __unkeyed-2 = "<cmd>lua _LAZYGIT_TOGGLE()<CR>";
+        desc = "Lazygit";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tn";
+        __unkeyed-2 = "<cmd>lua _JULIA_TOGGLE()<cr>";
+        desc = "Julia";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tp";
+        __unkeyed-2 = "<cmd>lua _PYTHON_TOGGLE()<cr>";
+        desc = "Python";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tt";
+        __unkeyed-2 = "<cmd>lua _HTOP_TOGGLE()<cr>";
+        desc = "Htop";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tu";
+        __unkeyed-2 = "<cmd>lua _NCDU_TOGGLE()<cr>";
+        desc = "NCDU";
+        nowait = true;
+        remap = false;
+      }
+    ];
+  };
+
   plugins.toggleterm = {
     enable = true;
     settings = {
-      size = 20;
+      size = ''
+        function(term)
+          if term.direction == "horizontal" then
+            return 20
+          elseif term.direction == "vertical" then
+            return vim.o.columns * 0.382
+          end
+        end
+      '';
       open_mapping = "[[<c-\\>]]";
       hide_numbers = true;
       shade_filetypes = [ ];
@@ -23,6 +78,7 @@
         };
       };
     };
+
     luaConfig.pre = ''
       local status_ok, toggleterm = pcall(require, "toggleterm")
       if not status_ok then
@@ -38,36 +94,32 @@
         vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
         vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
       end
-      
+
       vim.cmd('autocmd! TermOpen term://* lua Set_terminal_keymaps()')
-      
+
       local Terminal = require("toggleterm.terminal").Terminal
-      local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-      
+
+      local lazygit = Terminal:new({ cmd = "${lazygit}", hidden = true, direction = "float" })
       function _LAZYGIT_TOGGLE()
       	lazygit:toggle()
       end
-      
-      local node = Terminal:new({ cmd = "node", hidden = true })
-      
-      function _NODE_TOGGLE()
-      	node:toggle()
+
+      local julia = Terminal:new({ cmd = "julia --porject=.", hidden = true, direction = "vertical" })
+      function _JULIA_TOGGLE()
+      	julia:toggle()
       end
-      
-      local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-      
+
+      local ncdu = Terminal:new({ cmd = "${ncdu}", hidden = true, direction = "float" })
       function _NCDU_TOGGLE()
       	ncdu:toggle()
       end
-      
-      local htop = Terminal:new({ cmd = "htop", hidden = true })
-      
+
+      local htop = Terminal:new({ cmd = "${htop}", hidden = true, direction = "float" })
       function _HTOP_TOGGLE()
       	htop:toggle()
       end
-      
-      local python = Terminal:new({ cmd = "python", hidden = true })
-      
+
+      local python = Terminal:new({ cmd = "${python}", hidden = true, direction = "vertical" })
       function _PYTHON_TOGGLE()
       	python:toggle()
       end

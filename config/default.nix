@@ -23,7 +23,7 @@
     ./autoCmd.nix
     ./options.nix
     ./keymaps.nix
-    (import ./cmp.nix { inherit nixpkgs-unfree; })
+    (import ./cmp.nix { inherit pkgs nixpkgs-unfree; })
   ];
 
   colorschemes.tokyonight.enable = true;

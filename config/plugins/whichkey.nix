@@ -144,13 +144,6 @@
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gg";
-          __unkeyed-2 = "<cmd>lua _LAZYGIT_TOGGLE()<CR>";
-          desc = "Lazygit";
-          nowait = true;
-          remap = false;
-        }
-        {
           __unkeyed-1 = "<leader>gj";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.next_hunk()<cr>";
           desc = "Next Hunk";
@@ -396,34 +389,6 @@
           __unkeyed-1 = "<leader>th";
           __unkeyed-2 = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
           desc = "Horizontal";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tn";
-          __unkeyed-2 = "<cmd>lua _NODE_TOGGLE()<cr>";
-          desc = "Node";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tp";
-          __unkeyed-2 = "<cmd>lua _PYTHON_TOGGLE()<cr>";
-          desc = "Python";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tt";
-          __unkeyed-2 = "<cmd>lua _HTOP_TOGGLE()<cr>";
-          desc = "Htop";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tu";
-          __unkeyed-2 = "<cmd>lua _NCDU_TOGGLE()<cr>";
-          desc = "NCDU";
           nowait = true;
           remap = false;
         }

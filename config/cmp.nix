@@ -1,4 +1,8 @@
-{ nixpkgs-unfree }: {
+{ pkgs, nixpkgs-unfree, }:
+let
+  inherit (pkgs.lib) getExe;
+  node = getExe pkgs.nodejs;
+in {
   plugins = {
     cmp-buffer.enable = true;
     cmp-path.enable = true;
@@ -60,7 +64,7 @@
           cvs = false;
           "." = false;
         };
-        copilotNodeCommand = "node";
+        copilotNodeCommand = "${node}";
         serverOptsOverrides = { };
       };
     };
