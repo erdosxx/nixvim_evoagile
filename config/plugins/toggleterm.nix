@@ -16,7 +16,7 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tn";
+        __unkeyed-1 = "<leader>tj";
         __unkeyed-2 = "<cmd>lua _JULIA_TOGGLE()<cr>";
         desc = "Julia";
         nowait = true;
@@ -104,7 +104,7 @@ in {
       	lazygit:toggle()
       end
 
-      local julia = Terminal:new({ cmd = "julia --porject=.", hidden = true, direction = "vertical" })
+      local julia = Terminal:new({ cmd = "julia --project=.", hidden = true, direction = "vertical" })
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
