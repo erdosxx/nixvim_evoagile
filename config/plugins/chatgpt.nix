@@ -1,5 +1,7 @@
-{ lib, ... }:
-let chatgptEnabled = false;
+{ lib, pkgs, ... }:
+let
+  chatgptEnabled = true;
+  cat = "${pkgs.coreutils}/bin/cat";
 in {
   keymaps = lib.mkIf chatgptEnabled [{
     mode = "n";
@@ -15,8 +17,8 @@ in {
   plugins.chatgpt = {
     enable = chatgptEnabled;
     settings = {
-      # api_key_cmd = sops.secrets.openai_key;
-      api_key_cmd = null;
+      # api_key_cmd = null;
+      api_key_cmd = "${cat} /etc/openai/api_key";
       yank_register = "+";
       edit_with_instructions = {
         diff = false;
@@ -131,7 +133,7 @@ in {
         };
       };
       openai_params = {
-        model = "gpt-40";
+        # model = "gpt-40";
         frequency_penalty = 0;
         presence_penalty = 0;
         max_tokens = 300;

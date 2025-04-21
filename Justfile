@@ -26,3 +26,6 @@ upp input:
 
 fmt:
   nix fmt
+
+show:
+  nix flake show
