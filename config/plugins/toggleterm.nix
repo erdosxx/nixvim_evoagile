@@ -5,7 +5,7 @@ let
   htop = getExe pkgs.htop;
   python = getExe pkgs.python3;
   ncdu = getExe pkgs.ncdu;
-  R = getExe pkgs.R;
+  R = "${pkgs.R}/bin/R";
 in {
   plugins.which-key = {
     settings.spec = [
