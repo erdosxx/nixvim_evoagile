@@ -5,6 +5,7 @@ let
   htop = getExe pkgs.htop;
   python = getExe pkgs.python3;
   ncdu = getExe pkgs.ncdu;
+  R = getExe pkgs.R;
 in {
   plugins.which-key = {
     settings.spec = [
@@ -40,6 +41,13 @@ in {
         __unkeyed-1 = "<leader>tu";
         __unkeyed-2 = "<cmd>lua _NCDU_TOGGLE()<cr>";
         desc = "NCDU";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tr";
+        __unkeyed-2 = "<cmd>lua _R_TOGGLE()<cr>";
+        desc = "R";
         nowait = true;
         remap = false;
       }
@@ -122,6 +130,11 @@ in {
       local python = Terminal:new({ cmd = "${python}", hidden = true, direction = "vertical" })
       function _PYTHON_TOGGLE()
       	python:toggle()
+      end
+
+      local R = Terminal:new({ cmd = "${R}", hidden = true, direction = "vertical" })
+      function _R_TOGGLE()
+      	R:toggle()
       end
     '';
   };
