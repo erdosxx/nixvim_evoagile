@@ -5,7 +5,6 @@ let
   htop = getExe pkgs.htop;
   python = getExe pkgs.python3;
   ncdu = getExe pkgs.ncdu;
-  R = "${pkgs.R}/bin/R";
 in {
   plugins.which-key = {
     settings.spec = [
@@ -132,7 +131,7 @@ in {
       	python:toggle()
       end
 
-      local R = Terminal:new({ cmd = "${R}", hidden = true, direction = "vertical" })
+      local R = Terminal:new({ cmd = "nix develop --command r", hidden = true, direction = "vertical" })
       function _R_TOGGLE()
       	R:toggle()
       end
