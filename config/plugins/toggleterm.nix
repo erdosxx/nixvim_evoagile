@@ -131,7 +131,7 @@ in {
       	python:toggle()
       end
 
-      local R = Terminal:new({ cmd = "nix develop --command r", hidden = true, direction = "vertical" })
+      local R = Terminal:new({ cmd = "nix develop --command R", hidden = true, direction = "vertical" })
       function _R_TOGGLE()
       	R:toggle()
       end
