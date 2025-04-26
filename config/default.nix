@@ -82,6 +82,9 @@
 
       -- from treesitter
       vim.g.skip_ts_context_commentstring_module = true
+
+      -- disable default keymapping from jupyter-vim
+      vim.g.jupyter_mapkeys = 0
     '';
 
   # For updating treesitter.

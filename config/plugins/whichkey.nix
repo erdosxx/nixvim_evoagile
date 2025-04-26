@@ -95,11 +95,12 @@
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>e";
+          __unkeyed-1 = "<localleader>e";
           __unkeyed-2 = "<cmd>NvimTreeToggle<cr>";
           desc = "Explorer";
           nowait = true;
           remap = false;
+          mode = [ "n" "v" ];
         }
         {
           __unkeyed-1 = "<leader>f";

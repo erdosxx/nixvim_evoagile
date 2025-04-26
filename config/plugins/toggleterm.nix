@@ -70,7 +70,7 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tu";
+        __unkeyed-1 = "<localleader>u";
         __unkeyed-2 = ''<cmd>lua _send_single_line()<cr>'';
         mode = "n";
         desc = "Send a line to terminal";
@@ -78,7 +78,7 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tu";
+        __unkeyed-1 = "<localleader>u";
         __unkeyed-2 = ''<cmd>lua _send_multiple_lines()<cr>'';
         mode = "v";
         desc = "Send vitual selected lines to terminal";
@@ -86,7 +86,7 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tk";
+        __unkeyed-1 = "<localleader>k";
         __unkeyed-2 = ''<cmd>lua _send_selected()<cr>'';
         mode = "v";
         desc = "Send selected parts to terminal";
@@ -94,7 +94,7 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>t/";
+        __unkeyed-1 = "<localleader>/";
         __unkeyed-2 = ''V%<cmd>lua _send_selected()<cr>%$'';
         mode = "n";
         desc = "Send matching parts to terminal";

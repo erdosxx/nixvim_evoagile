@@ -66,11 +66,6 @@
     }
     {
       mode = "n";
-      key = "<leader>e";
-      action = "<cmd>NvimTreeToggle<CR>";
-    }
-    {
-      mode = "n";
       key = "<C-h>";
       action = "<C-w>h";
     }
@@ -125,7 +120,7 @@
   ];
 
   files = {
-    "ftplugin/julia.lua" = {
+    # "ftplugin/julia.lua" = {
       # extraConfigLua = /*lua*/''
       #     vim.api.nvim_create_autocmd("FileType", {
       #     pattern = "julia",
@@ -135,7 +130,7 @@
       #     end,
       #   })
       # '';
-      keymaps = [
+      # keymaps = [
         # {
         #   mode = "n";
         #   key = "<localleader>o";
@@ -181,52 +176,52 @@
         #     remap = true;
         #   };
         # }
-        {
-          mode = "n";
-          key = "<localleader>u";
-          action = "<cmd>lua _send_single_line()<cr>";
-          options = {
-            desc = "send a line to toggle term";
-            remap = false;
-            silent = true;
-            nowait = true;
-          };
-        }
-        {
-          mode = "v";
-          key = "<localleader>u";
-          action = "<cmd>lua _send_multiple_lines()<cr>";
-          options = {
-            desc = "Send vitual selected lines to terminal";
-            remap = false;
-            silent = true;
-            nowait = true;
-          };
-        }
-        {
-          mode = "v";
-          key = "<localleader>k";
-          action = "<cmd>lua _send_selected()<cr>";
-          options = {
-            desc = "Send selected parts to terminal";
-            remap = false;
-            silent = true;
-            nowait = true;
-          };
-        }
-        {
-          mode = "n";
-          key = "<localleader>/";
-          action = "V%<cmd>lua _send_selected()<cr>%$";
-          options = {
-            desc = "Send selected parts to terminal";
-            remap = true;
-            silent = true;
-            nowait = true;
-          };
-        }
-      ];
-    };
+        # {
+        #   mode = "n";
+        #   key = "<localleader>u";
+        #   action = "<cmd>lua _send_single_line()<cr>";
+        #   options = {
+        #     desc = "send a line to toggle term";
+        #     remap = false;
+        #     silent = true;
+        #     nowait = true;
+        #   };
+        # }
+        # {
+        #   mode = "v";
+        #   key = "<localleader>u";
+        #   action = "<cmd>lua _send_multiple_lines()<cr>";
+        #   options = {
+        #     desc = "Send vitual selected lines to terminal";
+        #     remap = false;
+        #     silent = true;
+        #     nowait = true;
+        #   };
+        # }
+        # {
+        #   mode = "v";
+        #   key = "<localleader>k";
+        #   action = "<cmd>lua _send_selected()<cr>";
+        #   options = {
+        #     desc = "Send selected parts to terminal";
+        #     remap = false;
+        #     silent = true;
+        #     nowait = true;
+        #   };
+        # }
+        # {
+        #   mode = "n";
+        #   key = "<localleader>/";
+        #   action = "V%<cmd>lua _send_selected()<cr>%$";
+        #   options = {
+        #     desc = "Send selected parts to terminal";
+        #     remap = true;
+        #     silent = true;
+        #     nowait = true;
+        #   };
+        # }
+      # ];
+    # };
 
     "ftplugin/python.lua" = {
       keymaps = [
