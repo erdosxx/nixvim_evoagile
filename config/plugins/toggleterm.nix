@@ -71,7 +71,7 @@ in {
       }
       {
         __unkeyed-1 = "<leader>tu";
-        __unkeyed-2 = ''<cmd>lua send_single_line()<cr>'';
+        __unkeyed-2 = ''<cmd>lua _send_single_line()<cr>'';
         mode = "n";
         desc = "Send a line to terminal";
         nowait = true;
@@ -79,7 +79,7 @@ in {
       }
       {
         __unkeyed-1 = "<leader>tu";
-        __unkeyed-2 = ''<cmd>lua send_multiple_lines()<cr>'';
+        __unkeyed-2 = ''<cmd>lua _send_multiple_lines()<cr>'';
         mode = "v";
         desc = "Send vitual selected lines to terminal";
         nowait = true;
@@ -87,7 +87,7 @@ in {
       }
       {
         __unkeyed-1 = "<leader>tk";
-        __unkeyed-2 = ''<cmd>lua send_selected()<cr>'';
+        __unkeyed-2 = ''<cmd>lua _send_selected()<cr>'';
         mode = "v";
         desc = "Send selected parts to terminal";
         nowait = true;
@@ -95,11 +95,11 @@ in {
       }
       {
         __unkeyed-1 = "<leader>t/";
-        __unkeyed-2 = ''%:Format<CR>v%<cmd>lua send_selected()<cr>'';
-        mode = "v";
+        __unkeyed-2 = ''V%<cmd>lua _send_selected()<cr>%$'';
+        mode = "n";
         desc = "Send matching parts to terminal";
         nowait = true;
-        remap = false;
+        remap = true;
       }
     ];
   };
@@ -182,20 +182,18 @@ in {
       	R:toggle()
       end
 
-      -- local trim_spaces = false
-      function send_single_line(is_trim_spaces)
-        is_trim_spaces = is_trim_spaces or false
-        require("toggleterm").send_lines_to_terminal("single_line", is_trim_spaces, { args = vim.v.count })
+      local is_trim_spaces = true
+      local term_id = 1
+      function _send_single_line()
+        require("toggleterm").send_lines_to_terminal("single_line", is_trim_spaces, { args = term_id })
       end
 
-      function send_multiple_lines(is_trim_spaces)
-        is_trim_spaces = is_trim_spaces or false
-        require("toggleterm").send_lines_to_terminal("visual_lines", is_trim_spaces, { args = vim.v.count })
+      function _send_multiple_lines()
+        require("toggleterm").send_lines_to_terminal("visual_lines", is_trim_spaces, { args = term_id })
       end
 
-      function send_selected(is_trim_spaces)
-        is_trim_spaces = is_trim_spaces or false
-        require("toggleterm").send_lines_to_terminal("visual_selection", is_trim_spaces, { args = vim.v.count })
+      function _send_selected()
+        require("toggleterm").send_lines_to_terminal("visual_selection", is_trim_spaces, { args = term_id })
       end
     '';
   };
