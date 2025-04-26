@@ -372,33 +372,6 @@
           nowait = true;
           remap = false;
         }
-        {
-          __unkeyed-1 = "<leader>t";
-          group = "Terminal";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tf";
-          __unkeyed-2 = "<cmd>ToggleTerm direction=float<cr>";
-          desc = "Float";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>th";
-          __unkeyed-2 = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
-          desc = "Horizontal";
-          nowait = true;
-          remap = false;
-        }
-        {
-          __unkeyed-1 = "<leader>tv";
-          __unkeyed-2 = "<cmd>ToggleTerm size=80 direction=vertical<cr>";
-          desc = "Vertical";
-          nowait = true;
-          remap = false;
-        }
       ];
     };
   };

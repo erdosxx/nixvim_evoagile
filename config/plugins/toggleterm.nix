@@ -4,10 +4,36 @@ let
   lazygit = getExe pkgs.lazygit;
   htop = getExe pkgs.htop;
   python = getExe pkgs.python3;
-  ncdu = getExe pkgs.ncdu;
 in {
   plugins.which-key = {
     settings.spec = [
+      {
+        __unkeyed-1 = "<leader>t";
+        group = "Terminal";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tf";
+        __unkeyed-2 = "<cmd>ToggleTerm direction=float<cr>";
+        desc = "Float";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>th";
+        __unkeyed-2 = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
+        desc = "Horizontal";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tv";
+        __unkeyed-2 = "<cmd>ToggleTerm size=80 direction=vertical<cr>";
+        desc = "Vertical";
+        nowait = true;
+        remap = false;
+      }
       {
         __unkeyed-1 = "<leader>tg";
         __unkeyed-2 = "<cmd>lua _LAZYGIT_TOGGLE()<CR>";
@@ -37,16 +63,41 @@ in {
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tu";
-        __unkeyed-2 = "<cmd>lua _NCDU_TOGGLE()<cr>";
-        desc = "NCDU";
+        __unkeyed-1 = "<leader>tr";
+        __unkeyed-2 = "<cmd>lua _R_TOGGLE()<cr>";
+        desc = "R";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tr";
-        __unkeyed-2 = "<cmd>lua _R_TOGGLE()<cr>";
-        desc = "R";
+        __unkeyed-1 = "<leader>tu";
+        __unkeyed-2 = ''<cmd>lua send_single_line()<cr>'';
+        mode = "n";
+        desc = "Send a line to terminal";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tu";
+        __unkeyed-2 = ''<cmd>lua send_multiple_lines()<cr>'';
+        mode = "v";
+        desc = "Send vitual selected lines to terminal";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>tk";
+        __unkeyed-2 = ''<cmd>lua send_selected()<cr>'';
+        mode = "v";
+        desc = "Send selected parts to terminal";
+        nowait = true;
+        remap = false;
+      }
+      {
+        __unkeyed-1 = "<leader>t/";
+        __unkeyed-2 = ''%:Format<CR>v%<cmd>lua send_selected()<cr>'';
+        mode = "v";
+        desc = "Send matching parts to terminal";
         nowait = true;
         remap = false;
       }
@@ -116,11 +167,6 @@ in {
       	julia:toggle()
       end
 
-      local ncdu = Terminal:new({ cmd = "${ncdu}", hidden = true, direction = "float" })
-      function _NCDU_TOGGLE()
-      	ncdu:toggle()
-      end
-
       local htop = Terminal:new({ cmd = "${htop}", hidden = true, direction = "float" })
       function _HTOP_TOGGLE()
       	htop:toggle()
@@ -134,6 +180,22 @@ in {
       local R = Terminal:new({ cmd = "nix develop --command R", hidden = true, direction = "vertical" })
       function _R_TOGGLE()
       	R:toggle()
+      end
+
+      -- local trim_spaces = false
+      function send_single_line(is_trim_spaces)
+        is_trim_spaces = is_trim_spaces or false
+        require("toggleterm").send_lines_to_terminal("single_line", is_trim_spaces, { args = vim.v.count })
+      end
+
+      function send_multiple_lines(is_trim_spaces)
+        is_trim_spaces = is_trim_spaces or false
+        require("toggleterm").send_lines_to_terminal("visual_lines", is_trim_spaces, { args = vim.v.count })
+      end
+
+      function send_selected(is_trim_spaces)
+        is_trim_spaces = is_trim_spaces or false
+        require("toggleterm").send_lines_to_terminal("visual_selection", is_trim_spaces, { args = vim.v.count })
       end
     '';
   };
