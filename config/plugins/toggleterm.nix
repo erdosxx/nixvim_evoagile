@@ -29,7 +29,7 @@ in {
       }
       {
         __unkeyed-1 = "<leader>tv";
-        __unkeyed-2 = "<cmd>ToggleTerm size=80 direction=vertical<cr>";
+        __unkeyed-2 = "<cmd>ToggleTerm size=50 direction=vertical<cr>";
         desc = "Vertical";
         nowait = true;
         remap = false;
