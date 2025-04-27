@@ -373,6 +373,38 @@
           nowait = true;
           remap = false;
         }
+        {
+          __unkeyed-1 = ''<localleader>"'';
+          __unkeyed-2 = ''viw<esc>a"<esc>bi"<esc>lel'';
+          desc = ''Add " to start and end of word. Ex) word -> "word"'';
+          nowait = true;
+          remap = false;
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = ''<localleader>"'';
+          __unkeyed-2 = ''<esc>`>a"<esc>`<i"<esc>'';
+          desc = ''Add " in visual area'';
+          nowait = true;
+          remap = false;
+          mode = "v";
+        }
+        {
+          __unkeyed-1 = "<localleader>'";
+          __unkeyed-2 = "viw<esc>a'<esc>bi'<esc>lel";
+          desc = ''Add ' to start and end of word. Ex) word -> "word"'';
+          nowait = true;
+          remap = false;
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = "<localleader>'";
+          __unkeyed-2 = ''<esc>`>a'<esc>`<i'<esc>'';
+          desc = "Add ' in visual area";
+          nowait = true;
+          remap = false;
+          mode = "v";
+        }
       ];
     };
   };
