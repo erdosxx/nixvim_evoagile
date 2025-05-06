@@ -33,7 +33,7 @@
     maplocalleader = " ";
   };
 
-  diagnostics = {
+  diagnostic.settings = {
     virtual_text = false; # disable virtual text
     signs = {
       active = "signs"; # show signs
