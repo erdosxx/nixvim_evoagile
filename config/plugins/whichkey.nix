@@ -111,90 +111,90 @@
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>g";
+          __unkeyed-1 = "<localleader>g";
           group = "Git";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gR";
+          __unkeyed-1 = "<localleader>gR";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.reset_buffer()<cr>";
           desc = "Reset Buffer";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gb";
+          __unkeyed-1 = "<localleader>gb";
           __unkeyed-2 = "<cmd>Telescope git_branches<cr>";
           desc = "Checkout branch";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gc";
+          __unkeyed-1 = "<localleader>gc";
           __unkeyed-2 = "<cmd>Telescope git_commits<cr>";
           desc = "Checkout commit";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gd";
+          __unkeyed-1 = "<localleader>gd";
           __unkeyed-2 = "<cmd>Gitsigns diffthis HEAD<cr>";
           desc = "Diff";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gj";
+          __unkeyed-1 = "<localleader>gj";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.next_hunk()<cr>";
           desc = "Next Hunk";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gk";
+          __unkeyed-1 = "<localleader>gk";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.prev_hunk()<cr>";
           desc = "Prev Hunk";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gl";
+          __unkeyed-1 = "<localleader>gl";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.blame_line()<cr>";
           desc = "Blame";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>go";
+          __unkeyed-1 = "<localleader>go";
           __unkeyed-2 = "<cmd>Telescope git_status<cr>";
           desc = "Open changed file";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gp";
+          __unkeyed-1 = "<localleader>gp";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.preview_hunk()<cr>";
           desc = "Preview Hunk";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gr";
+          __unkeyed-1 = "<localleader>gr";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.reset_hunk()<cr>";
           desc = "Reset Hunk";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gs";
+          __unkeyed-1 = "<localleader>gs";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.stage_hunk()<cr>";
           desc = "Stage Hunk";
           nowait = true;
           remap = false;
         }
         {
-          __unkeyed-1 = "<leader>gu";
+          __unkeyed-1 = "<localleader>gu";
           __unkeyed-2 = "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>";
           desc = "Undo Stage Hunk";
           nowait = true;
