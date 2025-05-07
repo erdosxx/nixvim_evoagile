@@ -8,62 +8,62 @@ in {
   plugins.which-key = {
     settings.spec = [
       {
-        __unkeyed-1 = "<leader>t";
+        __unkeyed-1 = "<localleader>t";
         group = "Terminal";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tf";
+        __unkeyed-1 = "<localleader>tf";
         __unkeyed-2 = "<cmd>ToggleTerm direction=float<cr>";
         desc = "Float";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>th";
+        __unkeyed-1 = "<localleader>th";
         __unkeyed-2 = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
         desc = "Horizontal";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tv";
+        __unkeyed-1 = "<localleader>tv";
         __unkeyed-2 = "<cmd>ToggleTerm size=50 direction=vertical<cr>";
         desc = "Vertical";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tg";
+        __unkeyed-1 = "<localleader>tg";
         __unkeyed-2 = "<cmd>lua _LAZYGIT_TOGGLE()<CR>";
         desc = "Lazygit";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tj";
+        __unkeyed-1 = "<localleader>tj";
         __unkeyed-2 = "<cmd>lua _JULIA_TOGGLE()<cr>";
         desc = "Julia";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tp";
+        __unkeyed-1 = "<localleader>tp";
         __unkeyed-2 = "<cmd>lua _PYTHON_TOGGLE()<cr>";
         desc = "Python";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tt";
+        __unkeyed-1 = "<localleader>tt";
         __unkeyed-2 = "<cmd>lua _HTOP_TOGGLE()<cr>";
         desc = "Htop";
         nowait = true;
         remap = false;
       }
       {
-        __unkeyed-1 = "<leader>tr";
+        __unkeyed-1 = "<localleader>tr";
         __unkeyed-2 = "<cmd>lua _R_TOGGLE()<cr>";
         desc = "R";
         nowait = true;
