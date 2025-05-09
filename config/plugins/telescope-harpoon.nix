@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   plugins.telescope = {
     enable = true;
-    luaConfig.pre = # lua
+    luaConfig.pre =
+      # lua
       ''
         local actions = require "telescope.actions"
       '';
@@ -104,7 +105,6 @@
         # set_env = { COLORTERM = "truecolor"; };
         # sorting_strategy = "ascending";
       };
-
     };
     extensions.media-files = {
       enable = true;
@@ -118,6 +118,10 @@
   plugins.harpoon = {
     enable = true;
     enableTelescope = true;
+    settings.settings = {
+      save_on_toggle = true;
+      sync_on_ui_close = false;
+    };
   };
 
   keymaps = [
