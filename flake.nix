@@ -27,7 +27,7 @@
       systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
       flake = {
-        homeManagerModules.default = {pkgs, ...}: let
+        homeModules.default = {pkgs, ...}: let
           nixpkgs-unfree = unfree pkgs.system;
         in {
           imports = [(import ./module.nix {inherit inputs nixpkgs-unfree pkgs;})];
