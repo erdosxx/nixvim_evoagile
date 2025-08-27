@@ -15,7 +15,7 @@
     ./plugins/navic.nix
     ./plugins/none-ls.nix
     ./plugins/nvim-tree.nix
-    ./plugins/project.nix
+    # ./plugins/project.nix unmaintained project.
     ./plugins/telescope-harpoon.nix
     ./plugins/toggleterm.nix
     ./plugins/treesitter.nix
