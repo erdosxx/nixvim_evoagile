@@ -3,8 +3,8 @@
     enable = true;
     enableTelescope = true;
     settings = {
-      # active = true;
-      # on_config_done = nil,
+      active = true;
+      on_config_done = null;
       manual_mode = false;
 
       detection_methods = [ "pattern" ];
