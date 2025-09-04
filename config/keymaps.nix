@@ -121,106 +121,106 @@
 
   files = {
     # "ftplugin/julia.lua" = {
-      # extraConfigLua = /*lua*/''
-      #     vim.api.nvim_create_autocmd("FileType", {
-      #     pattern = "julia",
-      #     callback = function()
-      #       vim.opt_local.matchpairs:append("<:>")
-      #       vim.b.match_words = [[\<function\>:\<end\>,\<if\>:\<elseif\>:\<else\>:\<end\>,\<do\>:\<end\>,\<begin\>:\<end\>,\<try\>:\<catch\>:\<finally\>:\<end\>,\<while\>:\<end\>,\<for\>:\<end\>,\<let\>:\<end\>,\<macro\>:\<end\>,\<module\>:\<end\>]]
-      #     end,
-      #   })
-      # '';
-      # keymaps = [
-        # {
-        #   mode = "n";
-        #   key = "<localleader>o";
-        #   action = "<CMD>JuliaREPLConnect 2345<CR>";
-        #   options = {
-        #     silent = true;
-        #     noremap = true;
-        #   };
-        # }
-        # {
-        #   mode = "n";
-        #   key = "<localleader>u";
-        #   action = "<CMD>JuliaREPLSend<CR>";
-        #   options = {
-        #     silent = true;
-        #     noremap = true;
-        #   };
-        # }
-        # {
-        #   mode = "v";
-        #   key = "<localleader>u";
-        #   action = ":JuliaREPLSend<CR>";
-        #   options = {
-        #     silent = true;
-        #     noremap = true;
-        #   };
-        # }
-        # {
-        #   mode = "v";
-        #   key = "<localleader>k";
-        #   action = ":JuliaREPLSendRegion<CR> <cmd>normal! `><CR>";
-        #   options = {
-        #     silent = true;
-        #     noremap = true;
-        #   };
-        # }
-        # {
-        #   mode = "n";
-        #   key = "<localleader>/";
-        #   action = "%:Format<CR>v%:JuliaREPLSend<CR>%$";
-        #   options = {
-        #     silent = true;
-        #     remap = true;
-        #   };
-        # }
-        # {
-        #   mode = "n";
-        #   key = "<localleader>u";
-        #   action = "<cmd>lua _send_single_line()<cr>";
-        #   options = {
-        #     desc = "send a line to toggle term";
-        #     remap = false;
-        #     silent = true;
-        #     nowait = true;
-        #   };
-        # }
-        # {
-        #   mode = "v";
-        #   key = "<localleader>u";
-        #   action = "<cmd>lua _send_multiple_lines()<cr>";
-        #   options = {
-        #     desc = "Send vitual selected lines to terminal";
-        #     remap = false;
-        #     silent = true;
-        #     nowait = true;
-        #   };
-        # }
-        # {
-        #   mode = "v";
-        #   key = "<localleader>k";
-        #   action = "<cmd>lua _send_selected()<cr>";
-        #   options = {
-        #     desc = "Send selected parts to terminal";
-        #     remap = false;
-        #     silent = true;
-        #     nowait = true;
-        #   };
-        # }
-        # {
-        #   mode = "n";
-        #   key = "<localleader>/";
-        #   action = "V%<cmd>lua _send_selected()<cr>%$";
-        #   options = {
-        #     desc = "Send selected parts to terminal";
-        #     remap = true;
-        #     silent = true;
-        #     nowait = true;
-        #   };
-        # }
-      # ];
+    # extraConfigLua = /*lua*/''
+    #     vim.api.nvim_create_autocmd("FileType", {
+    #     pattern = "julia",
+    #     callback = function()
+    #       vim.opt_local.matchpairs:append("<:>")
+    #       vim.b.match_words = [[\<function\>:\<end\>,\<if\>:\<elseif\>:\<else\>:\<end\>,\<do\>:\<end\>,\<begin\>:\<end\>,\<try\>:\<catch\>:\<finally\>:\<end\>,\<while\>:\<end\>,\<for\>:\<end\>,\<let\>:\<end\>,\<macro\>:\<end\>,\<module\>:\<end\>]]
+    #     end,
+    #   })
+    # '';
+    # keymaps = [
+    # {
+    #   mode = "n";
+    #   key = "<localleader>o";
+    #   action = "<CMD>JuliaREPLConnect 2345<CR>";
+    #   options = {
+    #     silent = true;
+    #     noremap = true;
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<localleader>u";
+    #   action = "<CMD>JuliaREPLSend<CR>";
+    #   options = {
+    #     silent = true;
+    #     noremap = true;
+    #   };
+    # }
+    # {
+    #   mode = "v";
+    #   key = "<localleader>u";
+    #   action = ":JuliaREPLSend<CR>";
+    #   options = {
+    #     silent = true;
+    #     noremap = true;
+    #   };
+    # }
+    # {
+    #   mode = "v";
+    #   key = "<localleader>k";
+    #   action = ":JuliaREPLSendRegion<CR> <cmd>normal! `><CR>";
+    #   options = {
+    #     silent = true;
+    #     noremap = true;
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<localleader>/";
+    #   action = "%:Format<CR>v%:JuliaREPLSend<CR>%$";
+    #   options = {
+    #     silent = true;
+    #     remap = true;
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<localleader>u";
+    #   action = "<cmd>lua _send_single_line()<cr>";
+    #   options = {
+    #     desc = "send a line to toggle term";
+    #     remap = false;
+    #     silent = true;
+    #     nowait = true;
+    #   };
+    # }
+    # {
+    #   mode = "v";
+    #   key = "<localleader>u";
+    #   action = "<cmd>lua _send_multiple_lines()<cr>";
+    #   options = {
+    #     desc = "Send vitual selected lines to terminal";
+    #     remap = false;
+    #     silent = true;
+    #     nowait = true;
+    #   };
+    # }
+    # {
+    #   mode = "v";
+    #   key = "<localleader>k";
+    #   action = "<cmd>lua _send_selected()<cr>";
+    #   options = {
+    #     desc = "Send selected parts to terminal";
+    #     remap = false;
+    #     silent = true;
+    #     nowait = true;
+    #   };
+    # }
+    # {
+    #   mode = "n";
+    #   key = "<localleader>/";
+    #   action = "V%<cmd>lua _send_selected()<cr>%$";
+    #   options = {
+    #     desc = "Send selected parts to terminal";
+    #     remap = true;
+    #     silent = true;
+    #     nowait = true;
+    #   };
+    # }
+    # ];
     # };
 
     "ftplugin/python.lua" = {
@@ -309,12 +309,25 @@
       ];
     };
     "ftplugin/tex.lua" = {
-      extraConfigLua =
-        "\n          vim.cmd([[\n            :setlocal spell spelllang=en_us,en_gb\n          ]])\n        ";
+      extraConfigLua = ''
+         vim.cmd([[
+         :setlocal spell spelllang=en_us,en_gb
+        ]])
+      '';
+    };
+    "ftplugin/markdown.lua" = {
+      extraConfigLua = ''
+         vim.cmd([[
+         :setlocal spell spelllang=en_us,en_gb
+        ]])
+      '';
     };
     "ftplugin/bib.lua" = {
-      extraConfigLua =
-        "\n          vim.cmd([[\n            :setlocal spell spelllang=en_us,en_gb\n          ]])\n        ";
+      extraConfigLua = ''
+         vim.cmd([[
+         :setlocal spell spelllang=en_us,en_gb
+        ]])
+      '';
       keymaps = [
         {
           mode = "v"; # Visual mode
