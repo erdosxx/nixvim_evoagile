@@ -142,6 +142,7 @@
           require'harpoon':list():add()
           vim.notify("󱡅  marked file")
         end'';
+      options = { desc = "Harpoon: Mark file"; };
     }
   ];
 }

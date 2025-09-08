@@ -14,7 +14,10 @@
       mode = "n";
       key = "<localleader>f";
       action = ":Format<cr>";
-      options.silent = true;
+      options = {
+        silent = true;
+        desc = "format current buffer";
+      };
     }
     {
       mode = "n";
@@ -38,16 +41,19 @@
       mode = "n";
       key = "<localleader>v";
       action = "<cmd>bdelete!<cr>";
+      options.desc = "close current buffer";
     }
     {
       mode = "n";
       key = "<localleader>0";
       action = ":bnext<CR>";
+      options.desc = "go to next buffer";
     }
     {
       mode = "n";
       key = "<localleader>7";
       action = ":bprevious<CR>";
+      options.desc = "go to previous buffer";
     }
     {
       mode = "n";
@@ -83,6 +89,24 @@
       mode = "n";
       key = "<C-l>";
       action = "<C-w>l";
+    }
+    {
+      mode = "n";
+      key = "<localleader>s";
+      action.__raw = ''
+        function()
+          if vim.wo.spell then
+            vim.wo.spell = false
+          else
+            vim.wo.spell = true vim.opt.spelllang = {"en_us","en_gb"}
+          end
+        end
+      '';
+      options = {
+        desc = "toggle check spelling with en-us,en-gb";
+        silent = false;
+        noremap = true;
+      };
     }
     {
       mode = "i";
