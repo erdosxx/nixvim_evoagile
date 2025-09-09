@@ -40,8 +40,20 @@
     {
       mode = "n";
       key = "<localleader>v";
-      action = "<cmd>bdelete!<cr>";
-      options.desc = "close current buffer";
+      action.__raw = ''
+        function()
+          -- Get list of listed buffers (normal file buffers)
+          local buffers = vim.tbl_filter(function(bufnr)
+            return vim.fn.buflisted(bufnr) == 1
+          end, vim.api.nvim_list_bufs())
+          if #buffers == 1 then
+            vim.cmd("q")          -- Exit Neovim if last buffer
+          else
+            vim.cmd("bprevious | bdelete #")  -- Close current buffer otherwise
+          end
+        end
+      '';
+      options.desc = "close current buffer and go to previous buffer.";
     }
     {
       mode = "n";
