@@ -172,7 +172,7 @@ in {
       	htop:toggle()
       end
 
-      local python = Terminal:new({ cmd = "${python}", hidden = true, direction = "vertical" })
+      local python = Terminal:new({ cmd = "nix develop --command python", hidden = true, direction = "vertical" })
       function _PYTHON_TOGGLE()
       	python:toggle()
       end
