@@ -156,6 +156,7 @@
   ];
 
   files = {
+    # Temporarily disable JuliaREPL keymaps due to replace by toggle term
     # "ftplugin/julia.lua" = {
     # extraConfigLua = /*lua*/''
     #     vim.api.nvim_create_autocmd("FileType", {
@@ -259,68 +260,69 @@
     # ];
     # };
 
-    "ftplugin/python.lua" = {
-      keymaps = [
-        {
-          mode = "n";
-          key = "<localleader>o";
-          action = ''
-            <CMD>let g:python3_host_prog = substitute(system("which python3"), "\n", "", "")<CR><CMD>JupyterConnect<CR>'';
-          options = {
-            silent = true;
-            noremap = true;
-          };
-        }
-        {
-          mode = "n";
-          key = "<localleader>u";
-          action = "<cmd>JupyterSendRange<CR>";
-          options = {
-            silent = true;
-            noremap = true;
-          };
-        }
-        {
-          mode = "v";
-          key = "<localleader>u";
-          action =
-            "V<cmd>normal! <Plug>JupyterRunVisual<CR> <cmd>normal! `><CR><ESC>";
-          options = {
-            silent = true;
-            noremap = true;
-          };
-        }
-        {
-          mode = "v";
-          key = "<localleader>k";
-          action = "<Plug>JupyterRunVisual<CR> <cmd>normal! `><CR>";
-          options = {
-            silent = true;
-            noremap = true;
-          };
-        }
-        {
-          mode = "n";
-          key = "<localleader>/";
-          action =
-            "[m:Format<CR>]MV[m:JupyterSendRange<CR> <cmd>normal! `><CR>";
-          options = {
-            silent = true;
-            remap = true;
-          };
-        }
-        {
-          mode = "n";
-          key = "<localleader>.";
-          action = "%:Format<CR>v%:JupyterSendRange<CR>%$";
-          options = {
-            silent = true;
-            remap = true;
-            desc = "format and send range for matching range by %";
-          };
-        }
-      ];
-    };
+    # Temporarily disable Jupyter keymaps due to replace by toggle term
+    # "ftplugin/python.lua" = {
+    #   keymaps = [
+    #     {
+    #       mode = "n";
+    #       key = "<localleader>o";
+    #       action = ''
+    #         <CMD>let g:python3_host_prog = substitute(system("which python3"), "\n", "", "")<CR><CMD>JupyterConnect<CR>'';
+    #       options = {
+    #         silent = true;
+    #         noremap = true;
+    #       };
+    #     }
+    #     {
+    #       mode = "n";
+    #       key = "<localleader>u";
+    #       action = "<cmd>JupyterSendRange<CR>";
+    #       options = {
+    #         silent = true;
+    #         noremap = true;
+    #       };
+    #     }
+    #     {
+    #       mode = "v";
+    #       key = "<localleader>u";
+    #       action =
+    #         "V<cmd>normal! <Plug>JupyterRunVisual<CR> <cmd>normal! `><CR><ESC>";
+    #       options = {
+    #         silent = true;
+    #         noremap = true;
+    #       };
+    #     }
+    #     {
+    #       mode = "v";
+    #       key = "<localleader>k";
+    #       action = "<Plug>JupyterRunVisual<CR> <cmd>normal! `><CR>";
+    #       options = {
+    #         silent = true;
+    #         noremap = true;
+    #       };
+    #     }
+    #     {
+    #       mode = "n";
+    #       key = "<localleader>/";
+    #       action =
+    #         "[m:Format<CR>]MV[m:JupyterSendRange<CR> <cmd>normal! `><CR>";
+    #       options = {
+    #         silent = true;
+    #         remap = true;
+    #       };
+    #     }
+    #     {
+    #       mode = "n";
+    #       key = "<localleader>.";
+    #       action = "%:Format<CR>v%:JupyterSendRange<CR>%$";
+    #       options = {
+    #         silent = true;
+    #         remap = true;
+    #         desc = "format and send range for matching range by %";
+    #       };
+    #     }
+    #   ];
+    # };
 
     "ftplugin/clojure.lua" = {
       keymaps = [
