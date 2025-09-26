@@ -56,8 +56,8 @@ in {
         #   '';
         package = pkgs.julia-bin;
       };
-      # pyright.enable = true;
-      pylyzer.enable = true;
+      pyright.enable = true;
+      # pylyzer.enable = true;
       # Generated many error logs in ~/.local/state/nvim/lsp.log
       # ltex.enable = true;
       texlab = {
