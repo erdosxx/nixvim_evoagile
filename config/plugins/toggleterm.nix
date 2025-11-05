@@ -162,7 +162,7 @@ in {
       	lazygit:toggle()
       end
 
-      local julia = Terminal:new({ cmd = "nix develop --command julia --project=.", hidden = true, direction = "vertical" })
+      local julia = Terminal:new({ cmd = "nix develop .#''${DEVSHELL_NAME} --command julia --project=.", hidden = true, direction = "vertical" })
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
@@ -172,12 +172,12 @@ in {
       	htop:toggle()
       end
 
-      local python = Terminal:new({ cmd = "nix develop --command python", hidden = true, direction = "vertical" })
+      local python = Terminal:new({ cmd = "nix develop .#''${DEVSHELL_NAME} --command python", hidden = true, direction = "vertical" })
       function _PYTHON_TOGGLE()
       	python:toggle()
       end
 
-      local R = Terminal:new({ cmd = "nix develop --command R", hidden = true, direction = "vertical" })
+      local R = Terminal:new({ cmd = "nix develop .#''${DEVSHELL_NAME} --command R", hidden = true, direction = "vertical" })
       function _R_TOGGLE()
       	R:toggle()
       end
