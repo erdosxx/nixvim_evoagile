@@ -54,7 +54,7 @@ in {
         #       return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
         #     end
         #   '';
-        # package = pkgs.julia-bin;
+        package = pkgs.julia-bin;
       };
       pyright.enable = true;
       # pylyzer.enable = true;
