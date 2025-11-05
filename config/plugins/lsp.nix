@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   inherit (pkgs.lib) getExe;
-  julia = getExe pkgs.julia-bin;
+  # julia = getExe pkgs.julia-bin;
   alejandra = getExe pkgs.alejandra;
 in {
   plugins.lsp = {
@@ -40,7 +40,7 @@ in {
       julials = {
         enable = true;
         cmd = [
-          "${julia}"
+          "julia"
           "--startup-file=no"
           "--history-file=no"
           "--project=~/.julia/environment/nvim-lspconfig"
@@ -54,7 +54,7 @@ in {
         #       return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
         #     end
         #   '';
-        package = pkgs.julia-bin;
+        # package = pkgs.julia-bin;
       };
       pyright.enable = true;
       # pylyzer.enable = true;
