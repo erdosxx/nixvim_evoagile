@@ -39,19 +39,11 @@ in {
       };
       julials = {
         enable = true;
-        # cmd = [
-        #   "julia"
-        #   "--startup-file=no"
-        #   "--history-file=no"
-        #   "--project=~/.julia/environment/nvim-lspconfig"
-        #   "-e"
-        #   ''
-        #     import Pkg; Pkg.add("LanguageServer"); using LanguageServer; runserver()''
-        # ];
-        cmd = [
+        cmd = let devshellName = builtins.getEnv "DEVSHELL_NAME";
+        in [
           "nix"
           "develop"
-          ".#default"
+          (".#" + devshellName)
           "--command"
           "julia"
           "--startup-file=no"
