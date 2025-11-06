@@ -51,7 +51,7 @@ in {
         cmd = [
           "nix"
           "develop"
-          ".#$DEVSHELL_NAME"
+          ".#\${DEVSHELL_NAME}"
           "--command"
           "julia"
           "--startup-file=no"
