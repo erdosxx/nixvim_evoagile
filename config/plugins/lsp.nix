@@ -39,14 +39,26 @@ in {
       };
       julials = {
         enable = true;
+        # cmd = [
+        #   "julia"
+        #   "--startup-file=no"
+        #   "--history-file=no"
+        #   "--project=~/.julia/environment/nvim-lspconfig"
+        #   "-e"
+        #   ''
+        #     import Pkg; Pkg.add("LanguageServer"); using LanguageServer; runserver()''
+        # ];
         cmd = [
+          "nix"
+          "develop"
+          ".#$DEVSHELL_NAME"
+          "--command"
           "julia"
           "--startup-file=no"
           "--history-file=no"
           "--project=~/.julia/environment/nvim-lspconfig"
           "-e"
-          ''
-            import Pkg; Pkg.add("LanguageServer"); using LanguageServer; runserver()''
+          "using LanguageServer; runserver()"
         ];
         # rootDir = # lua
         #   ''
