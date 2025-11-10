@@ -29,9 +29,10 @@ in {
           enabled = false;
           autoRefresh = true;
           keymap = {
-            jumpNext = "<c-j>";
-            jumpPrev = "<c-k>";
-            accept = "<c-a>";
+            # Comment out to resolve error for dupulicated keymaps
+            # jumpNext = "<c-j>";
+            # jumpPrev = "<c-k>";
+            # accept = "<c-a>";
             refresh = "r";
             open = "<M-CR>";
           };

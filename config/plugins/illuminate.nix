@@ -2,29 +2,31 @@
   plugins.illuminate = {
     enable = true;
 
-    providers = [ "lsp" "treesitter" "regex" ];
-    delay = 200;
-    filetypesDenylist = [
-      "dirvish"
-      "fugitive"
-      "alpha"
-      "NvimTree"
-      "packer"
-      "neogitstatus"
-      "Trouble"
-      "lir"
-      "Outline"
-      "spectre_panel"
-      "toggleterm"
-      "DressingSelect"
-      "TelescopePrompt"
-    ];
-    filetypesAllowlist = [ ];
-    modesDenylist = [ ];
-    modesAllowlist = [ ];
-    providersRegexSyntaxAllowlist = [ ];
-    providersRegexSyntaxDenylist = [ ];
-    underCursor = true;
+    settings = {
+      delay = 200;
+      providers = [ "lsp" "treesitter" "regex" ];
+      filetypes_allowlist = [ ];
+      filetypes_denylist = [
+        "dirvish"
+        "fugitive"
+        "alpha"
+        "NvimTree"
+        "packer"
+        "neogitstatus"
+        "Trouble"
+        "lir"
+        "Outline"
+        "spectre_panel"
+        "toggleterm"
+        "DressingSelect"
+        "TelescopePrompt"
+      ];
+      under_cursor = true;
+      modes_denylist = [ ];
+      modes_allowlist = [ ];
+      providers_regex_syntax_allowlist = [ ];
+      providers_regex_syntax_denylist = [ ];
+    };
   };
 
   keymaps = [
@@ -52,7 +54,8 @@
     }
   ];
 
-  extraConfigLua = # lua
+  extraConfigLua =
+    # lua
     ''
       vim.g.Illuminate_ftblacklist = {'alpha', 'NvimTree'}
     '';
