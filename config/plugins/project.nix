@@ -7,7 +7,8 @@
       on_config_done = null;
       manual_mode = false;
 
-      detection_methods = [ "pattern" ];
+      # deprecated
+      # detection_methods = [ "pattern" ];
 
       patterns =
         [ ".git" "_darcs" ".hg" ".bzr" ".svn" "Makefile" "package.json" ];
