@@ -8,6 +8,7 @@ local snips = {
   s({ trig = ";F", snippetType = "autosnippet" }, { t("ℱ") }),
   s({ trig = ";G", snippetType = "autosnippet" }, { t("𝒢") }),
   s({ trig = ";J", snippetType = "autosnippet" }, { t("𝒥") }),
+  s({ trig = ";L", snippetType = "autosnippet" }, { t("ℒ") }),
   s({ trig = ";M", snippetType = "autosnippet" }, { t("ℳ") }),
   s({ trig = ";P", snippetType = "autosnippet" }, { t("𝒫") }),
   s({ trig = ";S", snippetType = "autosnippet" }, { t("𝒮") }),
