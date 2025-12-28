@@ -11,6 +11,7 @@ local snips = {
   s({ trig = ";J", snippetType = "autosnippet" }, { t("𝒥") }),
   s({ trig = ";L", snippetType = "autosnippet" }, { t("ℒ") }),
   s({ trig = ";M", snippetType = "autosnippet" }, { t("ℳ") }),
+  s({ trig = ";O", snippetType = "autosnippet" }, { t("𝒪") }),
   s({ trig = ";P", snippetType = "autosnippet" }, { t("𝒫") }),
   s({ trig = ";S", snippetType = "autosnippet" }, { t("𝒮") }),
   s({ trig = ";[[", snippetType = "autosnippet" }, { t("⟦") }),
