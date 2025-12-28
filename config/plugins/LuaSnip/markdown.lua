@@ -5,6 +5,7 @@ local t = ls.text_node
 local snips = {
   s({ trig = ";A", snippetType = "autosnippet" }, { t("𝒜") }),
   s({ trig = ";B", snippetType = "autosnippet" }, { t("ℬ") }),
+  s({ trig = ";C", snippetType = "autosnippet" }, { t("𝒞") }),
   s({ trig = ";F", snippetType = "autosnippet" }, { t("ℱ") }),
   s({ trig = ";G", snippetType = "autosnippet" }, { t("𝒢") }),
   s({ trig = ";J", snippetType = "autosnippet" }, { t("𝒥") }),
