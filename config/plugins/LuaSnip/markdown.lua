@@ -34,6 +34,7 @@ local snips = {
   s({ trig = ";bbP", snippetType = "autosnippet" }, { t("\\mathbb{P}") }),
   s({ trig = ";bbR", snippetType = "autosnippet" }, { t("\\mathbb{R}") }),
   s({ trig = ";bbN", snippetType = "autosnippet" }, { t("\\mathbb{N}") }),
+  s({ trig = ";bbQ", snippetType = "autosnippet" }, { t("\\mathbb{Q}") }),
   s({ trig = ";grs", snippetType = "autosnippet" }, { t("\\sigma") }),
   s({ trig = ";grS", snippetType = "autosnippet" }, { t("\\Sigma") }),
   s({ trig = ";caE", snippetType = "autosnippet" }, { t("\\mathcal{E}") }),
@@ -41,6 +42,8 @@ local snips = {
   s({ trig = ";dju", snippetType = "autosnippet" }, { t("⊍") }),
   s({ trig = ";dCu", snippetType = "autosnippet" }, { t("⋓") }),
   s({ trig = ";dCa", snippetType = "autosnippet" }, { t("⋒") }),
+  s({ trig = ";ms", snippetType = "autosnippet" }, { t("(X,𝒜,\\mu)") }),
+  s({ trig = ";ps", snippetType = "autosnippet" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
 }
 
 return snips
