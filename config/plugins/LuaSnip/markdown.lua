@@ -1,49 +1,81 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
+local i = ls.insert_node
+local asp = ls.extend_decorator.apply(s, {})
+local fmta = require("luasnip.extras.fmt").fmta
 
 local snips = {
-  s({ trig = ";A", snippetType = "autosnippet" }, { t("𝒜") }),
-  s({ trig = ";B", snippetType = "autosnippet" }, { t("ℬ") }),
-  s({ trig = ";C", snippetType = "autosnippet" }, { t("𝒞") }),
-  s({ trig = ";D", snippetType = "autosnippet" }, { t("𝒟") }),
-  s({ trig = ";F", snippetType = "autosnippet" }, { t("ℱ") }),
-  s({ trig = ";G", snippetType = "autosnippet" }, { t("𝒢") }),
-  s({ trig = ";J", snippetType = "autosnippet" }, { t("𝒥") }),
-  s({ trig = ";K", snippetType = "autosnippet" }, { t("𝒦") }),
-  s({ trig = ";L", snippetType = "autosnippet" }, { t("ℒ") }),
-  s({ trig = ";M", snippetType = "autosnippet" }, { t("ℳ") }),
-  s({ trig = ";N", snippetType = "autosnippet" }, { t("𝒩") }),
-  s({ trig = ";O", snippetType = "autosnippet" }, { t("𝒪") }),
-  s({ trig = ";P", snippetType = "autosnippet" }, { t("𝒫") }),
-  s({ trig = ";Q", snippetType = "autosnippet" }, { t("𝒬") }),
-  s({ trig = ";S", snippetType = "autosnippet" }, { t("𝒮") }),
-  s({ trig = ";T", snippetType = "autosnippet" }, { t("𝒯") }),
-  s({ trig = ";U", snippetType = "autosnippet" }, { t("𝒰") }),
-  s({ trig = ";V", snippetType = "autosnippet" }, { t("𝒱") }),
-  s({ trig = ";W", snippetType = "autosnippet" }, { t("𝒲") }),
-  s({ trig = ";X", snippetType = "autosnippet" }, { t("𝒳") }),
-  s({ trig = ";Y", snippetType = "autosnippet" }, { t("𝒴") }),
-  s({ trig = ";Z", snippetType = "autosnippet" }, { t("𝒵") }),
-  s({ trig = ";[[", snippetType = "autosnippet" }, { t("⟦") }),
-  s({ trig = ";]]", snippetType = "autosnippet" }, { t("⟧") }),
-  s({ trig = ";((", snippetType = "autosnippet" }, { t("⦅") }),
-  s({ trig = ";))", snippetType = "autosnippet" }, { t("⦆") }),
-  s({ trig = ";00", snippetType = "autosnippet" }, { t("𝟎") }),
-  s({ trig = ";11", snippetType = "autosnippet" }, { t("𝟙") }),
-  s({ trig = ";bbP", snippetType = "autosnippet" }, { t("\\mathbb{P}") }),
-  s({ trig = ";bbR", snippetType = "autosnippet" }, { t("\\mathbb{R}") }),
-  s({ trig = ";bbN", snippetType = "autosnippet" }, { t("\\mathbb{N}") }),
-  s({ trig = ";bbQ", snippetType = "autosnippet" }, { t("\\mathbb{Q}") }),
-  s({ trig = ";grs", snippetType = "autosnippet" }, { t("\\sigma") }),
-  s({ trig = ";grS", snippetType = "autosnippet" }, { t("\\Sigma") }),
-  s({ trig = ";caE", snippetType = "autosnippet" }, { t("\\mathcal{E}") }),
-  s({ trig = ";djU", snippetType = "autosnippet" }, { t("⨃") }),
-  s({ trig = ";dju", snippetType = "autosnippet" }, { t("⊍") }),
-  s({ trig = ";dCu", snippetType = "autosnippet" }, { t("⋓") }),
-  s({ trig = ";dCa", snippetType = "autosnippet" }, { t("⋒") }),
-  s({ trig = ";ms", snippetType = "autosnippet" }, { t("(X,𝒜,\\mu)") }),
-  s({ trig = ";ps", snippetType = "autosnippet" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
+  asp({ trig = ";A" }, { t("𝒜") }),
+  asp({ trig = ";B" }, { t("ℬ") }),
+  asp({ trig = ";C" }, { t("𝒞") }),
+  asp({ trig = ";D" }, { t("𝒟") }),
+  asp({ trig = ";F" }, { t("ℱ") }),
+  asp({ trig = ";G" }, { t("𝒢") }),
+  asp({ trig = ";J" }, { t("𝒥") }),
+  asp({ trig = ";K" }, { t("𝒦") }),
+  asp({ trig = ";L" }, { t("ℒ") }),
+  asp({ trig = ";M" }, { t("ℳ") }),
+  asp({ trig = ";N" }, { t("𝒩") }),
+  asp({ trig = ";O" }, { t("𝒪") }),
+  asp({ trig = ";P" }, { t("𝒫") }),
+  asp({ trig = ";Q" }, { t("𝒬") }),
+  asp({ trig = ";S" }, { t("𝒮") }),
+  asp({ trig = ";T" }, { t("𝒯") }),
+  asp({ trig = ";U" }, { t("𝒰") }),
+  asp({ trig = ";V" }, { t("𝒱") }),
+  asp({ trig = ";W" }, { t("𝒲") }),
+  asp({ trig = ";X" }, { t("𝒳") }),
+  asp({ trig = ";Y" }, { t("𝒴") }),
+  asp({ trig = ";Z" }, { t("𝒵") }),
+  asp({ trig = ";[[" }, { t("⟦") }),
+  asp({ trig = ";]]" }, { t("⟧") }),
+  asp({ trig = ";((" }, { t("⦅") }),
+  asp({ trig = ";))" }, { t("⦆") }),
+  asp({ trig = ";00" }, { t("𝟎") }),
+  asp({ trig = ";11" }, { t("𝟙") }),
+  asp({ trig = ";bbP" }, { t("\\mathbb{P}") }),
+  asp({ trig = ";bbR" }, { t("\\mathbb{R}") }),
+  asp({ trig = ";bbN" }, { t("\\mathbb{N}") }),
+  asp({ trig = ";bbQ" }, { t("\\mathbb{Q}") }),
+  asp({ trig = ";grs" }, { t("\\sigma") }),
+  asp({ trig = ";grS" }, { t("\\Sigma") }),
+  asp({ trig = ";caE" }, { t("\\mathcal{E}") }),
+  asp({ trig = ";djU" }, { t("⨃") }),
+  asp({ trig = ";dju" }, { t("⊍") }),
+  asp({ trig = ";dCu" }, { t("⋓") }),
+  asp({ trig = ";dCa" }, { t("⋒") }),
+  asp({ trig = ";ms" }, { t("(X,𝒜,\\mu)") }),
+  asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
+  asp({ trig = ";iy" }, { t("\\infty") }),
+  asp({ trig = ";mm", name = "math mode" }, fmta([[$<>$]], { i(1) })),
+  asp(
+    { trig = ";md", name = "math display mode" },
+    fmta(
+      [[
+        $$
+        <>
+        $$
+      ]],
+      { i(1) }
+    )
+  ),
+  asp(
+    { trig = ";vt", name = "lr vert", desc = "left and right vert" },
+    fmta([[\lVert <>\rVert_{<>} <>]], { i(1), i(2, "p"), i(0) })
+  ),
+  asp(
+    { trig = ";hat", name = "prefix hat", dscr = "prefix hat" },
+    fmta([[\hat{<>} <>]], { i(1), i(0) })
+  ),
+  asp(
+    { trig = ";bar", name = "prefix bar", dscr = "prefix bar" },
+    fmta([[\overline{<>} <>]], { i(1), i(0) })
+  ),
+  asp(
+    { trig = "sum", name = "sum", dscr = "\\sum_{n=1}^{\\infty}" },
+    fmta([[\sum_{<>}^{<>} <>]], { i(1, "n=1"), i(2, "\\infty"), i(0) })
+  ),
 }
 
 return snips
