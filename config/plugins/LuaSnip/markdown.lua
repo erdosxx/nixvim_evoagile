@@ -2,7 +2,7 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
-local asp = ls.extend_decorator.apply(s, {})
+local asp = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 local fmta = require("luasnip.extras.fmt").fmta
 
 local snips = {
