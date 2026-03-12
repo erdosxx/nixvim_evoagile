@@ -49,6 +49,7 @@ local snips = {
   asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
   asp({ trig = ";iy" }, { t("\\infty") }),
   asp({ trig = ";sf" }, { t("$\\sigma$-finite ") }),
+  asp({ trig = ";dd" }, { t("\\,\\mathrm{d}") }),
   asp({ trig = ";mm", name = "math mode" }, fmta([[$<>$]], { i(1) })),
   asp(
     { trig = ";md", name = "math display mode" },
