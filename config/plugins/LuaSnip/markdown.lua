@@ -79,6 +79,10 @@ local snips = {
     { trig = ";sum", name = "sum", dscr = "\\sum_{n=1}^{\\infty}" },
     fmta([[\sum_{<>}^{<>} <>]], { i(1, "n=1"), i(2, "\\infty"), i(0) })
   ),
+  asp(
+    { trig = ";dl", name = "(dx)", dscr = "(\\mathrm{d}<input>)" },
+    fmta([[(\mathrm{d}<>) <>]], { i(1), i(0) })
+  ),
 }
 
 return snips
