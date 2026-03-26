@@ -6,6 +6,10 @@ local asp = ls.extend_decorator.apply(s, { snippetType = "autosnippet" })
 local fmta = require("luasnip.extras.fmt").fmta
 
 local snips = {
+  asp({ trig = ";((" }, { t("⦅") }),
+  asp({ trig = ";))" }, { t("⦆") }),
+  asp({ trig = ";00" }, { t("𝟎") }),
+  asp({ trig = ";11" }, { t("𝟙") }),
   asp({ trig = ";A" }, { t("𝒜") }),
   asp({ trig = ";B" }, { t("ℬ") }),
   asp({ trig = ";C" }, { t("𝒞") }),
@@ -30,29 +34,34 @@ local snips = {
   asp({ trig = ";Z" }, { t("𝒵") }),
   asp({ trig = ";[[" }, { t("⟦") }),
   asp({ trig = ";]]" }, { t("⟧") }),
-  asp({ trig = ";((" }, { t("⦅") }),
-  asp({ trig = ";))" }, { t("⦆") }),
-  asp({ trig = ";00" }, { t("𝟎") }),
-  asp({ trig = ";11" }, { t("𝟙") }),
+  asp(
+    { trig = ";bar", name = "prefix bar", dscr = "prefix bar" },
+    fmta([[\overline{<>} <>]], { i(1), i(0) })
+  ),
   asp({ trig = ";bbE" }, { t("\\mathbb{E}") }),
   asp({ trig = ";bbN" }, { t("\\mathbb{N}") }),
   asp({ trig = ";bbP" }, { t("\\mathbb{P}") }),
   asp({ trig = ";bbQ" }, { t("\\mathbb{Q}") }),
   asp({ trig = ";bbR" }, { t("\\mathbb{R}") }),
-  asp({ trig = ";grs" }, { t("\\sigma") }),
-  asp({ trig = ";grS" }, { t("\\Sigma") }),
-  asp({ trig = ";grl" }, { t("\\lambda") }),
   asp({ trig = ";caE" }, { t("\\mathcal{E}") }),
+  asp({ trig = ";cs" }, { t("$\\cap$-stable") }),
+  asp({ trig = ";dCa" }, { t("⋒") }),
+  asp({ trig = ";dCu" }, { t("⋓") }),
+  asp({ trig = ";dd" }, { t("\\,\\mathrm{d}") }),
   asp({ trig = ";djU" }, { t("⨃") }),
   asp({ trig = ";dju" }, { t("⊍") }),
-  asp({ trig = ";dCu" }, { t("⋓") }),
-  asp({ trig = ";dCa" }, { t("⋒") }),
-  asp({ trig = ";ms" }, { t("(X,𝒜,\\mu)") }),
-  asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
+  asp(
+    { trig = ";dl", name = "(dx)", dscr = "(\\mathrm{d}<input>)" },
+    fmta([[(\mathrm{d}<>) <>]], { i(1), i(0) })
+  ),
+  asp({ trig = ";grS" }, { t("\\Sigma") }),
+  asp({ trig = ";grl" }, { t("\\lambda") }),
+  asp({ trig = ";grs" }, { t("\\sigma") }),
+  asp(
+    { trig = ";hat", name = "prefix hat", dscr = "prefix hat" },
+    fmta([[\hat{<>} <>]], { i(1), i(0) })
+  ),
   asp({ trig = ";iy" }, { t("\\infty") }),
-  asp({ trig = ";sf" }, { t("$\\sigma$-finite ") }),
-  asp({ trig = ";dd" }, { t("\\,\\mathrm{d}") }),
-  asp({ trig = ";mm", name = "math mode" }, fmta([[$<>$]], { i(1) })),
   asp(
     { trig = ";md", name = "math display mode" },
     fmta(
@@ -64,25 +73,18 @@ local snips = {
       { i(1) }
     )
   ),
-  asp(
-    { trig = ";vt", name = "lr vert", desc = "left and right vert" },
-    fmta([[\lVert <>\rVert_{<>} <>]], { i(1), i(2, "p"), i(0) })
-  ),
-  asp(
-    { trig = ";hat", name = "prefix hat", dscr = "prefix hat" },
-    fmta([[\hat{<>} <>]], { i(1), i(0) })
-  ),
-  asp(
-    { trig = ";bar", name = "prefix bar", dscr = "prefix bar" },
-    fmta([[\overline{<>} <>]], { i(1), i(0) })
-  ),
+  asp({ trig = ";mm", name = "math mode" }, fmta([[$<>$]], { i(1) })),
+  asp({ trig = ";ms" }, { t("(X,𝒜,\\mu)") }),
+  asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
+  asp({ trig = ";sa" }, { t("$\\sigma$-algebra") }),
+  asp({ trig = ";sf" }, { t("$\\sigma$-finite ") }),
   asp(
     { trig = ";sum", name = "sum", dscr = "\\sum_{n=1}^{\\infty}" },
     fmta([[\sum_{<>}^{<>} <>]], { i(1, "n=1"), i(2, "\\infty"), i(0) })
   ),
   asp(
-    { trig = ";dl", name = "(dx)", dscr = "(\\mathrm{d}<input>)" },
-    fmta([[(\mathrm{d}<>) <>]], { i(1), i(0) })
+    { trig = ";vt", name = "lr vert", desc = "left and right vert" },
+    fmta([[\lVert <>\rVert_{<>} <>]], { i(1), i(2, "p"), i(0) })
   ),
 }
 
