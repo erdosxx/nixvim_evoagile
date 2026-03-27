@@ -78,6 +78,7 @@ local snips = {
   asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
   asp({ trig = ";sa" }, { t("$\\sigma$-algebra") }),
   asp({ trig = ";sf" }, { t("$\\sigma$-finite ") }),
+  asp({ trig = ";set", name = "set" }, fmta([[\{<>\} <>]], { i(1), i(0) })),
   asp(
     { trig = ";sum", name = "sum", dscr = "\\sum_{n=1}^{\\infty}" },
     fmta([[\sum_{<>}^{<>} <>]], { i(1, "n=1"), i(2, "\\infty"), i(0) })
