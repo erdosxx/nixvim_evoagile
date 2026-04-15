@@ -63,6 +63,14 @@ local snips = {
   ),
   asp({ trig = ";iy" }, { t("\\infty") }),
   asp(
+    {
+      trig = ";id",
+      name = "independence",
+      dscr = "\\mathrel{\\unicode{x2AEB}}",
+    },
+    { t("⫫") }
+  ),
+  asp(
     { trig = ";md", name = "math display mode" },
     fmta(
       [[
