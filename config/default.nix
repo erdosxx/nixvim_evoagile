@@ -5,11 +5,11 @@
     ./options.nix
     ./plugins/alpha.nix
     ./plugins/bufferline.nix
-    # ./plugins/chatgpt.nix
-    ./plugins/claude-code.nix
+    # ./plugins/chatgpt.nix # no use
+    # ./plugins/claude-code.nix # can be replaced by toggle term
     ./plugins/comment.nix
     ./plugins/conjure.nix
-    # ./plugins/efmls-configs.nix
+    # ./plugins/efmls-configs.nix # does not work
     (import ./plugins/extraPlugins.nix {inherit pkgs;})
     ./plugins/gitsigns.nix
     ./plugins/illuminate.nix
@@ -23,7 +23,7 @@
     ./plugins/nvim-autopairs.nix
     ./plugins/nvim-tree.nix
     ./plugins/project.nix
-    # ./plugins/quarto.nix
+    # ./plugins/quarto.nix # does not work
     ./plugins/telescope-harpoon.nix
     ./plugins/toggleterm.nix
     (import ./plugins/treesitter.nix {inherit pkgs;})
