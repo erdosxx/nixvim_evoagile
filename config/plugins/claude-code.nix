@@ -6,7 +6,7 @@
         hide_numbers = false;
         hide_signcolumn = false;
         position = "vertical";
-        split_ratio = 0.4;
+        split_ratio = 0.3;
       };
     };
   };
@@ -23,11 +23,11 @@
         silent = true;
       };
     }
-    {
+    { # Not work: Cannot find ClaudeCodeSend command.
       mode = "v";
       key = "<localleader>c";
       action =
-        ''<cmd>ClaudeCodeSend<cr>'';
+        '':<C-u>ClaudeCodeSend<cr>'';
       options = {
         desc = "Send current visual selection to Claude";
         noremap = true;
