@@ -9,9 +9,10 @@
     ./options.nix
     ./plugins/alpha.nix
     ./plugins/bufferline.nix
-    ./plugins/chatgpt.nix
+    # ./plugins/chatgpt.nix
     ./plugins/comment.nix
     ./plugins/conjure.nix
+    # ./plugins/efmls-configs.nix
     (import ./plugins/extraPlugins.nix {inherit pkgs;})
     ./plugins/gitsigns.nix
     ./plugins/illuminate.nix
@@ -25,6 +26,7 @@
     ./plugins/nvim-autopairs.nix
     ./plugins/nvim-tree.nix
     ./plugins/project.nix
+    # ./plugins/quarto.nix
     ./plugins/telescope-harpoon.nix
     ./plugins/toggleterm.nix
     (import ./plugins/treesitter.nix {inherit pkgs;})
@@ -96,29 +98,5 @@
     barbecue.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
-    # Error occurred for autocommand FTplugin
-    # quarto = {
-    #   enable = true;
-    #   settings = {
-    #     lspFeatures = {
-    #       enabled = true;
-    #       # With "julia" autocmd error occurred.
-    #       languages = [ "r" "python" "bash" "html" ];
-    #       completion.enabled = true;
-    #       diagnostics.enabled = true;
-    #     };
-    #   };
-    # };
-
-    # Not work
-    # efmls-configs = {
-    #   enable = true;
-    #   setup = {
-    #     tex = {
-    #       formatter = [ "latexindent" ];
-    #       linter = [ "vale" ];
-    #     };
-    #   };
-    # };
   };
 }
