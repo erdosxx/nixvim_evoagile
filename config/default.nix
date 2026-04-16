@@ -9,6 +9,7 @@
     ./plugins/gitsigns.nix
     ./plugins/illuminate.nix
     ./plugins/indent-blankline.nix
+    ./plugins/lean.nix
     ./plugins/lsp.nix
     ./plugins/lualine.nix
     ./plugins/luasnip.nix
