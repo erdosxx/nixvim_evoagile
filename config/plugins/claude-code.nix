@@ -10,4 +10,29 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<localleader>c";
+      action =
+        ''<cmd>ClaudeCode<cr>'';
+      options = {
+        desc = "Toggle the Claude Code terminal window";
+        noremap = true;
+        silent = true;
+      };
+    }
+    {
+      mode = "v";
+      key = "<localleader>c";
+      action =
+        ''<cmd>ClaudeCodeSend<cr>'';
+      options = {
+        desc = "Send current visual selection to Claude";
+        noremap = true;
+        silent = true;
+      };
+    }
+  ];
 }
