@@ -1,11 +1,18 @@
-{ pkgs, nixpkgs-unfree, ... }: {
+{
+  pkgs,
+  nixpkgs-unfree,
+  ...
+}: {
   imports = [
+    ./autoCmd.nix
+    ./keymaps.nix
+    ./options.nix
     ./plugins/alpha.nix
-    ./plugins/chatgpt.nix
-    ./plugins/conjure.nix
-    ./plugins/comment.nix
-    ./plugins/nvim-autopairs.nix
     ./plugins/bufferline.nix
+    ./plugins/chatgpt.nix
+    ./plugins/comment.nix
+    ./plugins/conjure.nix
+    (import ./plugins/extraPlugins.nix {inherit pkgs;})
     ./plugins/gitsigns.nix
     ./plugins/illuminate.nix
     ./plugins/indent-blankline.nix
@@ -15,16 +22,15 @@
     ./plugins/luasnip.nix
     ./plugins/navic.nix
     ./plugins/none-ls.nix
+    ./plugins/nvim-autopairs.nix
     ./plugins/nvim-tree.nix
     ./plugins/project.nix
     ./plugins/telescope-harpoon.nix
     ./plugins/toggleterm.nix
-    ./plugins/treesitter.nix
+    (import ./plugins/treesitter.nix {inherit pkgs;})
+    ./plugins/vimtex.nix
     ./plugins/whichkey.nix
-    ./autoCmd.nix
-    ./options.nix
-    ./keymaps.nix
-    (import ./cmp.nix { inherit pkgs nixpkgs-unfree; })
+    (import ./cmp.nix {inherit pkgs nixpkgs-unfree;})
   ];
 
   colorschemes.tokyonight.enable = true;
@@ -85,39 +91,6 @@
       vim.g.jupyter_mapkeys = 0
     '';
 
-  # For updating treesitter.
-  extraPackages = with pkgs; [ zig ];
-
-  extraPlugins = [
-    # (pkgs.vimUtils.buildVimPlugin {
-    #   name = "julia-repl-vim";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "erdosxx";
-    #     repo = "julia-repl-vim";
-    #     rev = "b2fc08feca51d1f6119ca291be6c7fca2fac7c45";
-    #     hash = "sha256-JwOfLBNrR7GRK5IFmeklJK4Z7NOg+6ijOomCS41r4kM=";
-    #   };
-    # })
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "julia-repl-vim";
-      src = pkgs.fetchFromGitHub {
-        owner = "andreypopp";
-        repo = "julia-repl-vim";
-        rev = "49dc50348df20cc54628b4599d0ce89bd07213e5";
-        hash = "sha256-M5Tx3iqCTqUxwuw7bbyJKI3sHHanZYvDrZ3r0p+LRl4=";
-      };
-    })
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "jupyter-vim";
-      src = pkgs.fetchFromGitHub {
-        owner = "jupyter-vim";
-        repo = "jupyter-vim";
-        rev = "91eef96d0f26ce37db241833341d08d11c8e5215";
-        hash = "sha256-p00O3YYbMz5ekx8O9kkX+TLNgNdnR427Zr39t17OfrU=";
-      };
-    })
-  ];
-
   plugins = {
     web-devicons.enable = true;
     barbecue.enable = true;
@@ -147,19 +120,5 @@
     #     };
     #   };
     # };
-
-    vimtex = {
-      enable = true;
-      settings = {
-        compiler_method = "latexrun";
-        toc_config = {
-          split_pos =
-            "\n              vert\n              topleft\n              ";
-          split_width = 40;
-        };
-        view_method = "zathura";
-        imaps_leader = "¬";
-      };
-    };
   };
 }
