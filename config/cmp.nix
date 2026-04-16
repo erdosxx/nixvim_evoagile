@@ -1,5 +1,7 @@
-{ pkgs, nixpkgs-unfree, }:
-let
+{
+  pkgs,
+  nixpkgs-unfree,
+}: let
   inherit (pkgs.lib) getExe;
   node = getExe pkgs.nodejs;
 in {
@@ -66,22 +68,8 @@ in {
           "." = false;
         };
         copilotNodeCommand = "${node}";
-        serverOptsOverrides = { };
+        serverOptsOverrides = {};
       };
-    };
-
-    cmp-tabnine = {
-      enable = true;
-      settings = {
-        max_lines = 1000;
-        max_num_results = 20;
-        sort = true;
-        run_on_every_keystroke = true;
-        snippet_placeholder = "..";
-        ignored_file_types = { };
-        show_prediction_strength = false;
-      };
-      package = nixpkgs-unfree.vimPlugins.cmp-tabnine;
     };
 
     cmp = {
@@ -89,7 +77,12 @@ in {
       autoEnableSources = true;
 
       filetype = {
-        tex = { sources = [ { name = "luasnip"; } { name = "nvim_lsp"; } ]; };
+        tex = {
+          sources = [
+            {name = "luasnip";}
+            {name = "nvim_lsp";}
+          ];
+        };
       };
 
       settings = {
@@ -176,7 +169,11 @@ in {
           '';
         };
         formatting = {
-          fields = [ "kind" "abbr" "menu" ];
+          fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
           format = ''
             function(entry, vim_item)
               local kind_icons = {
@@ -210,23 +207,12 @@ in {
               vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
               vim_item.menu = ({
                 copilot = "[Copilot]",
-                cmp_tabnine = "[TN]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[NVIM_LUA]",
                 luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]",
               })[entry.source.name]
-              if entry.source.name == "cmp_tabnine" then
-                local detail = (entry.completion_item.labelDetails or {}).detail
-                vim_item.kind = ""
-                if detail and detail:find(".*%%.*") then
-                  vim_item.kind = vim_item.kind .. " " .. detail
-                end
-                if (entry.completion_item.data or {}).multiline then
-                  vim_item.kind = vim_item.kind .. " " .. "[ML]"
-                end
-              end
               local maxwidth = 80
               vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
               return vim_item
@@ -234,15 +220,23 @@ in {
           '';
         };
         sources = [
-          { name = "copilot"; }
-          { name = "cmp_tabnine"; }
-          { name = "nvim_lsp"; }
-          { name = "nvim_lua"; }
-          { name = "luasnip"; }
-          { name = "buffer"; }
-          { name = "path"; }
+          {name = "copilot";}
+          {name = "nvim_lsp";}
+          {name = "nvim_lua";}
+          {name = "luasnip";}
+          {name = "buffer";}
+          {name = "path";}
         ];
-        window.documentation.border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
+        window.documentation.border = [
+          "╭"
+          "─"
+          "╮"
+          "│"
+          "╯"
+          "─"
+          "╰"
+          "│"
+        ];
       };
     };
   };
