@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nixpkgs-unfree,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./autoCmd.nix
     ./keymaps.nix
@@ -10,6 +6,7 @@
     ./plugins/alpha.nix
     ./plugins/bufferline.nix
     # ./plugins/chatgpt.nix
+    ./plugins/claude-code.nix
     ./plugins/comment.nix
     ./plugins/conjure.nix
     # ./plugins/efmls-configs.nix
@@ -32,8 +29,10 @@
     (import ./plugins/treesitter.nix {inherit pkgs;})
     ./plugins/vimtex.nix
     ./plugins/whichkey.nix
-    (import ./cmp.nix {inherit pkgs nixpkgs-unfree;})
+    (import ./cmp.nix {inherit pkgs;})
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   colorschemes.tokyonight.enable = true;
 

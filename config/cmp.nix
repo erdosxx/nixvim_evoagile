@@ -1,7 +1,4 @@
-{
-  pkgs,
-  nixpkgs-unfree,
-}: let
+{pkgs}: let
   inherit (pkgs.lib) getExe;
   node = getExe pkgs.nodejs;
 in {

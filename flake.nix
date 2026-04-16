@@ -16,21 +16,18 @@
     nixvim,
     flake-parts,
     ...
-  } @ inputs: let
-    unfree = system:
-      import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-  in
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
       flake = {
-        homeModules.default = {pkgs, ...}: let
-          nixpkgs-unfree = unfree pkgs.system;
-        in {
-          imports = [(import ./module.nix {inherit inputs nixpkgs-unfree pkgs;})];
+        homeModules.default = {pkgs, ...}: {
+          imports = [(import ./module.nix {inherit inputs pkgs;})];
         };
       };
 
@@ -41,15 +38,20 @@
           inherit system; # or alternatively, set `pkgs`
           module = import ./config; # import the module directly
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
-          extraSpecialArgs = {nixpkgs-unfree = unfree system;};
+          extraSpecialArgs = {
+          };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        unfree = system:
+          import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
         pkgs = unfree system;
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
-          default =
-            nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
 
         packages = {
