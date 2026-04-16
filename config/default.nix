@@ -1,12 +1,15 @@
 {pkgs, ...}: {
   imports = [
     ./autoCmd.nix
+    ./cmp.nix # should be replaced by blink later
     ./keymaps.nix
     ./options.nix
     ./plugins/alpha.nix
+    # ./plugins/blink.nix # still need to check snippet with highlighting.
     ./plugins/bufferline.nix
     # ./plugins/chatgpt.nix # no use
     # ./plugins/claude-code.nix # can be replaced by toggle term
+    (import ./plugins/copilot.nix {inherit pkgs;})
     ./plugins/comment.nix
     ./plugins/conjure.nix
     # ./plugins/efmls-configs.nix # does not work
@@ -20,7 +23,7 @@
     ./plugins/luasnip.nix
     ./plugins/navic.nix
     ./plugins/none-ls.nix
-    ./plugins/nvim-autopairs.nix
+    # ./plugins/nvim-autopairs.nix
     ./plugins/nvim-tree.nix
     ./plugins/project.nix
     # ./plugins/quarto.nix # does not work
@@ -29,7 +32,6 @@
     (import ./plugins/treesitter.nix {inherit pkgs;})
     ./plugins/vimtex.nix
     ./plugins/whichkey.nix
-    (import ./cmp.nix {inherit pkgs;})
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -75,14 +77,27 @@
         }
       })
 
-      vim.lsp.handlers["textDocument/hover"] =
-        vim.lsp.with(vim.lsp.handlers.hover, {
-          border = "rounded",
-        })
+      -- vim.lsp.handlers["textDocument/hover"] =
+      --   vim.lsp.with(vim.lsp.handlers.hover, {
+      --     border = "rounded",
+      --   })
+      --
+      -- vim.lsp.handlers["textDocument/signatureHelp"] =
+      --   vim.lsp.with(vim.lsp.handlers.signature_help, {
+      --     border = "rounded",
+      -- })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local bufnr = args.buf
 
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, {
-          border = "rounded",
+          vim.keymap.set("n", "K", function()
+            vim.lsp.buf.hover({ border = "rounded" })
+          end, { buffer = bufnr, desc = "LSP Hover" })
+
+          vim.keymap.set({ "n", "i" }, "<C-k>", function()
+            vim.lsp.buf.signature_help({ border = "rounded" })
+          end, { buffer = bufnr, desc = "LSP Signature Help" })
+        end,
       })
 
       -- from treesitter
