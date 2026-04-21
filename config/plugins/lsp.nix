@@ -28,9 +28,6 @@ in {
         enable = true;
         cmd = [ "clangd" "--offset-encoding=utf-16" ];
       };
-      cmake.enable = true;
-      bashls.enable = true;
-      dockerls.enable = true;
       r_language_server = {
         enable = true;
         package = null;
@@ -60,14 +57,16 @@ in {
         #   '';
         package = pkgs.julia-bin;
       };
-      pyright.enable = true;
-      # pylyzer.enable = true;
-      # Generated many error logs in ~/.local/state/nvim/lsp.log
-      # ltex.enable = true;
       texlab = {
         enable = true;
         filetypes = [ "tex" ];
       };
+      bashls.enable = true;
+      cmake.enable = true;
+      dockerls.enable = true;
+      markdown_oxide.enable = true;
+      pyright.enable = true;
+      zls.enable = true;
     };
 
     keymaps.lspBuf = {
