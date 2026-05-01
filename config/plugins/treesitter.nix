@@ -4,6 +4,8 @@
 
   plugins.treesitter = {
     enable = true;
+    highlight.disable = [];
+        # [ "tex" "latex" "cpp" "rust" "markdown" ]; # To prevent error
     settings = {
       auto_install = true;
       modules = {};
@@ -15,8 +17,6 @@
       };
       highlight = {
         enable = true;
-        disable = [];
-        # [ "tex" "latex" "cpp" "rust" "markdown" ]; # To prevent error
         additional_vim_regex_highlighting = true;
       };
       indent = {
