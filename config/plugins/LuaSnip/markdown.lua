@@ -43,6 +43,7 @@ local snips = {
   asp({ trig = ";bbP" }, { t("\\mathbb{P}") }),
   asp({ trig = ";bbQ" }, { t("\\mathbb{Q}") }),
   asp({ trig = ";bbR" }, { t("\\mathbb{R}") }),
+  asp({ trig = ";bbV" }, { t("\\mathbb{V}") }),
   asp({ trig = ";caE" }, { t("\\mathcal{E}") }),
   asp({ trig = ";cs" }, { t("$\\cap$-stable") }),
   asp({ trig = ";dCa" }, { t("⋒") }),
