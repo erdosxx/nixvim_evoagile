@@ -16,7 +16,7 @@
       silent_chdir = true;
 
       ignore_lsp = [ ];
-      datapath = { __raw = "vim.fn.stdpath('data')"; };
+      history.save_dir = { __raw = "vim.fn.stdpath('data')"; };
     };
   };
 }
