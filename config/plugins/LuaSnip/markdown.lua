@@ -72,6 +72,18 @@ local snips = {
     { t("⫫") }
   ),
   asp(
+    { trig = ";la", name = "lr absolute |", desc = "left and right |" },
+    fmta([[\left| <> \right| <>]], { i(1), i(0) })
+  ),
+  asp(
+    { trig = ";lb", name = "lr brace {}", desc = "left and right {}" },
+    fmta([[\left\{ <> \right\} <>]], { i(1), i(0) })
+  ),
+  asp(
+    { trig = ";lp", name = "lr parentheses ()", desc = "left and right ()" },
+    fmta([[\left( <> \right) <>]], { i(1), i(0) })
+  ),
+  asp(
     { trig = ";md", name = "math display mode" },
     fmta(
       [[
