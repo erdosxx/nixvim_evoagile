@@ -5,7 +5,7 @@ let
   alejandra = getExe pkgs.alejandra;
 in {
   plugins.lsp = {
-    enable = false;
+    enable = true;
     servers = {
       lua_ls = {
         enable = true;
