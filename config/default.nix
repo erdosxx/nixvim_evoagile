@@ -18,7 +18,7 @@
     ./plugins/illuminate.nix
     ./plugins/indent-blankline.nix
     ./plugins/lean.nix
-    ./plugins/lsp.nix
+    (import ./plugins/lsp.nix {inherit pkgs;})
     ./plugins/lualine.nix
     ./plugins/luasnip.nix
     ./plugins/navic.nix
