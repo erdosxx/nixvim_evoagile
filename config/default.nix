@@ -30,7 +30,7 @@
     ./plugins/telescope-harpoon.nix
     ./plugins/toggleterm.nix
     (import ./plugins/treesitter.nix {inherit pkgs;})
-    # import ./plugins/vimtex.nix
+    import ./plugins/vimtex.nix
     ./plugins/whichkey.nix
   ];
 
