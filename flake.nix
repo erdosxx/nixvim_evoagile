@@ -5,7 +5,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       # url =
-      #   "github:nix-community/nixvim?rev=e537d4a6b4c1c81f8b71dfd916fdf970d0d5c987";
+      #   "github:nix-community/nixvim?rev=c6a99bb41fb0f37e03ca38b1d81b006e98e3bf1a";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
