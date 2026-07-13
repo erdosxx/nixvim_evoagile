@@ -96,6 +96,10 @@ local snips = {
   ),
   asp({ trig = ";mm", name = "math mode" }, fmta([[$<>$]], { i(1) })),
   asp({ trig = ";ms" }, { t("(X,𝒜,\\mu)") }),
+  asp(
+    { trig = ";rm", name = "mathrm", dscr = "Use roman charater" },
+    fmta([[\mathrm{<>} <>]], { i(1), i(0) })
+  ),
   asp({ trig = ";ps" }, { t("(\\Omega,𝒜,\\mathbb{P})") }),
   asp({ trig = ";sa" }, { t("$\\sigma$-algebra ") }),
   asp({ trig = ";sf" }, { t("$\\sigma$-finite ") }),
