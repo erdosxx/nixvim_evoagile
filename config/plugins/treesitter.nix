@@ -1,17 +1,18 @@
-{pkgs}: {
+{ pkgs }: {
   # For updating treesitter.
-  extraPackages = with pkgs; [zig];
+  extraPackages = with pkgs; [ zig ];
 
   plugins.treesitter = {
     enable = true;
-    highlight.disable = [];
-        # [ "tex" "latex" "cpp" "rust" "markdown" ]; # To prevent error
+    highlight.disable = [ ];
+    # [ "tex" "latex" "cpp" "rust" "markdown" ]; # To prevent error
+    indent.disable = [ "yaml" ];
     settings = {
       auto_install = true;
-      modules = {};
+      modules = { };
       ensure_installed = "all"; # "all" (parsers with maintainers), or a list of languages
       sync_install = true; # install languages synchronously (only applied to `ensure_installed`)
-      ignore_install = []; # List of parsers to ignore installing
+      ignore_install = [ ]; # List of parsers to ignore installing
       autopairs = {
         enable = true;
       };
@@ -21,7 +22,7 @@
       };
       indent = {
         enable = true;
-        disable = ["yaml"];
+        # disable = [ "yaml" ];
       };
       rainbow = {
         enable = true;
