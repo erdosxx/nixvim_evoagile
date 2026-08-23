@@ -112,5 +112,6 @@
     barbecue.enable = true;
     rainbow-delimiters.enable = true;
     coverage.enable = true;
+    # tmux-navigator.enable = true;
   };
 }
