@@ -61,7 +61,7 @@
     ## creates a swapfile
     swapfile = false;
     ## Enable 24-bit RGB color for TUI.
-    ## termguicolors = true,
+    termguicolors = true;
     ## time to wait for a mapped sequence to complete (in milliseconds)
     ## Default = 1000
     timeoutlen = 300;
