@@ -9,7 +9,7 @@
     ./plugins/bufferline.nix
     # ./plugins/chatgpt.nix # no use
     # ./plugins/claude-code.nix # can be replaced by toggle term
-    (import ./plugins/copilot.nix {inherit pkgs;})
+    # (import ./plugins/copilot.nix {inherit pkgs;})
     ./plugins/comment.nix
     ./plugins/conjure.nix
     # ./plugins/efmls-configs.nix # does not work
