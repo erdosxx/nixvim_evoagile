@@ -19,7 +19,7 @@ in {
 
   plugins.copilot-lua = {
     enable = true;
-    package = pkgs-unstable.vimPlugins.copilot-lua;
+    package = pkgs.vimPlugins.copilot-lua;
     settings = {
       panel = {
         enabled = false;
