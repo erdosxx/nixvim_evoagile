@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   imports = [inputs.nixvim.homeModules.nixvim];
@@ -9,6 +10,6 @@
     enable = true;
     defaultEditor = true;
     # Additional NixVim settings can go here
-    imports = [(import ./config {inherit inputs pkgs;})];
+    imports = [(import ./config {inherit inputs pkgs pkgs-unstable;})];
   };
 }

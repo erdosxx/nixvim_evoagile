@@ -9,6 +9,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -26,8 +27,12 @@
       ];
 
       flake = {
-        homeModules.default = {pkgs, ...}: {
-          imports = [(import ./module.nix {inherit inputs pkgs;})];
+        homeModules.default = {
+          pkgs,
+          pkgs-unstable,
+          ...
+        }: {
+          imports = [(import ./module.nix {inherit inputs pkgs pkgs-unstable;})];
         };
       };
 
@@ -36,18 +41,19 @@
         nixvim' = nixvim.legacyPackages.${system};
         nixvimModule = {
           inherit system; # or alternatively, set `pkgs`
-          module = import ./config; # import the module directly
+          module = import ./config {inherit inputs pkgs pkgs-unstable;}; # import the module directly
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
-        unfree = system:
-          import inputs.nixpkgs {
+        unfree = system: nixpkgs':
+          import nixpkgs' {
             inherit system;
             config.allowUnfree = true;
           };
-        pkgs = unfree system;
+        pkgs = unfree system inputs.nixpkgs;
+        pkgs-unstable = unfree system inputs.nixpkgs-unstable;
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken

@@ -1,4 +1,7 @@
-{pkgs}: let
+{
+  pkgs,
+  pkgs-unstable,
+}: let
   inherit (pkgs.lib) getExe;
   node = getExe pkgs.nodejs;
 in {
@@ -16,6 +19,7 @@ in {
 
   plugins.copilot-lua = {
     enable = true;
+    package = pkgs-unstable.vimPlugins.copilot-lua;
     settings = {
       panel = {
         enabled = false;
