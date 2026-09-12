@@ -2,7 +2,7 @@
   # plugins.lsp.servers.lean3ls.enable = true;
 
   plugins.lean = {
-    enable = true;
+    enable = false;
     settings = {
       abbreviations = {
         enable = true;
