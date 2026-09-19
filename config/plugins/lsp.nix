@@ -7,6 +7,7 @@ in {
   plugins.lsp = {
     enable = true;
     servers = {
+      clojure_lsp.enable = true;
       lua_ls = {
         enable = true;
         settings.format.enable = true;
