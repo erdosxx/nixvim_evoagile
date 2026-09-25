@@ -3,7 +3,6 @@
   ...
 }: let
   inherit (pkgs.lib) getExe;
-  # julia = getExe pkgs.julia-bin;
   alejandra = getExe pkgs.alejandra;
 in {
   plugins.lsp = {
@@ -68,25 +67,6 @@ in {
         cmd = [
           "${juliaLsp}/bin/julia-lsp"
         ];
-        # cmd = let devshellName = builtins.getEnv "DEVSHELL_NAME";
-        # in [
-        #   "nix"
-        #   "develop"
-        #   (".#" + devshellName)
-        #   "--command"
-        #   "julia"
-        #   "--startup-file=no"
-        #   "--history-file=no"
-        #   "--project=~/.julia/environment/nvim-lspconfig"
-        #   "-e"
-        #   "using LanguageServer; runserver()"
-        # ];
-        # rootDir = # lua
-        #   ''
-        #     function(fname)
-        #       return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-        #     end
-        #   '';
         package = pkgs.julia-bin;
       };
       texlab = {
