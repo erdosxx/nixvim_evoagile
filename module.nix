@@ -10,6 +10,14 @@
     enable = true;
     defaultEditor = true;
     # Additional NixVim settings can go here
-    imports = [(import ./config {inherit inputs pkgs pkgs-unstable;})];
+    imports = [
+      (import ./config {
+        inherit
+          inputs
+          pkgs
+          pkgs-unstable
+          ;
+      })
+    ];
   };
 }

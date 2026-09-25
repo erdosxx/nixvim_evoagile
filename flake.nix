@@ -34,8 +34,17 @@
           pkgs,
           pkgs-unstable,
           ...
-        }: {
-          imports = [(import ./module.nix {inherit inputs pkgs pkgs-unstable;})];
+        }: let
+        in {
+          imports = [
+            (import ./module.nix {
+              inherit
+                inputs
+                pkgs
+                pkgs-unstable
+                ;
+            })
+          ];
         };
       };
 
@@ -44,7 +53,13 @@
         nixvim' = nixvim.legacyPackages.${system};
         nixvimModule = {
           inherit system; # or alternatively, set `pkgs`
-          module = import ./config {inherit inputs pkgs pkgs-unstable;}; # import the module directly
+          module = import ./config {
+            inherit
+              inputs
+              pkgs
+              pkgs-unstable
+              ;
+          }; # import the module directly
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
           };
