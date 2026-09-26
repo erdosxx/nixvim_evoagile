@@ -54,26 +54,6 @@ in {
         ];
         filetypes = [ "julia" ];
       };
-      # julials = let
-      #   juliaLsp = pkgs.writeShellScriptBin "julia-lsp" ''
-      #     set -eu
-      #
-      #     project_root="''${JULIA_PROJECT_ROOT:-$PWD}"
-      #     language_server_project="$project_root/.julia-depot/environments/language-server"
-      #
-      #     exec ${pkgs.julia-bin}/bin/julia \
-      #       --startup-file=no \
-      #       --history-file=no \
-      #       --project="$language_server_project" \
-      #       -e 'using LanguageServer; runserver()'
-      #   '';
-      # in {
-      #   enable = true;
-      #   cmd = [
-      #     "${juliaLsp}/bin/julia-lsp"
-      #   ];
-      #   package = pkgs.julia-bin;
-      # };
       texlab = {
         enable = true;
         filetypes = ["tex"];
