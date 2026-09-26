@@ -50,6 +50,7 @@ in {
         enable = true;
         cmd = [
           "${pkgs.fatou}/bin/fatou"
+           "lsp"
         ];
         filetypes = [ "julia" ];
       };
