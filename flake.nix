@@ -7,7 +7,7 @@
       # url =
       #   "github:nix-community/nixvim?rev=41844750e55f17b1385d5b09ca7ade5f11f49506";
       # inputs.nixpkgs.follows = "nixpkgs-small-fix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-small-fix.url = "github:nixos/nixpkgs?rev=f496248152e1ad8c61b59a6739cc499b447168e4";
 
