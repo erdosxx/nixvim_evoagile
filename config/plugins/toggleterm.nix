@@ -3,7 +3,7 @@ let
   inherit (pkgs.lib) getExe;
   lazygit = getExe pkgs.lazygit;
   htop = getExe pkgs.htop;
-  python = getExe pkgs.python3;
+  devenv = getExe pkgs.devenv;
 in {
   plugins.which-key = {
     settings.spec = [
@@ -162,7 +162,7 @@ in {
       	lazygit:toggle()
       end
 
-      local julia = Terminal:new({ cmd = "devenv shell -- julia --project=.", hidden = true, direction = "vertical" })
+      local julia = Terminal:new({ cmd = "${devenv} shell -- julia --project=.", hidden = true, direction = "vertical" })
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
@@ -172,12 +172,12 @@ in {
       	htop:toggle()
       end
 
-      local python = Terminal:new({ cmd = "devenv shell -- python", hidden = true, direction = "vertical" })
+      local python = Terminal:new({ cmd = "${devenv} shell -- python", hidden = true, direction = "vertical" })
       function _PYTHON_TOGGLE()
       	python:toggle()
       end
 
-      local R = Terminal:new({ cmd = "devenv shell --command R", hidden = true, direction = "vertical" })
+      local R = Terminal:new({ cmd = "${devenv} shell --command R", hidden = true, direction = "vertical" })
       function _R_TOGGLE()
       	R:toggle()
       end
