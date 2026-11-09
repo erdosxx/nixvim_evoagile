@@ -95,11 +95,11 @@ in {
       }
       {
         __unkeyed-1 = "<localleader>/";
-        __unkeyed-2 = ''V%<cmd>lua _send_selected()<cr>%$'';
+        __unkeyed-2 = ''<cmd>lua _send_matching()<cr>'';
         mode = "n";
         desc = "Send matching parts to terminal";
         nowait = true;
-        remap = true;
+        remap = false;
       }
     ];
   };
@@ -170,8 +170,6 @@ in {
         direction = "vertical",
       })
 
-      -- local julia = Terminal:new({ cmd = '[ -n "$DEVENV_ROOT" ] && julia --project=. --load ~/.julia/config/startup_nopair.jl || ${devenv} shell -- julia --project=. --load ~/.julia/config/startup_nopair.jl', hidden = true, direction = "vertical" })
-
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
@@ -204,6 +202,73 @@ in {
 
       function _send_selected()
         require("toggleterm").send_lines_to_terminal("visual_selection", is_trim_spaces, { args = term_id })
+      end
+
+      local function get_julia_block_range()
+        local line = vim.api.nvim_get_current_line()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local row = cursor[1] - 1
+
+        -- Try treesitter first
+        local ok, parser = pcall(vim.treesitter.get_parser, 0, "julia")
+        if ok and parser then
+          parser:parse()
+          local first_col = line:find("%S")
+          local col = first_col and (first_col - 1) or cursor[2]
+          local node = vim.treesitter.get_node({ pos = { row, col } })
+          while node do
+            local ntype = node:type()
+            if ntype == "function_definition" or ntype == "macro_definition" then
+              local srow, _, erow, _ = node:range()
+              if row == srow or row == erow then
+                return srow + 1, erow + 1
+              end
+            end
+            node = node:parent()
+          end
+        end
+
+        -- Fallback using searchpairpos
+        local all_start_pat = [[\C\<\%(function\|macro\|quote\|let\|if\|for\|while\|try\|struct\|module\|baremodule\|begin\|do\)\>]]
+        local mid_pat = [[\C\<\%(elseif\|else\|catch\|finally\)\>]]
+        local end_pat = [[\C\<end\>]]
+
+        if line:match("%f[%a]function%f[%A]") or line:match("%f[%a]macro%f[%A]") then
+          local end_pos = vim.fn.searchpairpos(all_start_pat, mid_pat, end_pat, "nW")
+          if end_pos[1] > 0 then
+            return cursor[1], end_pos[1]
+          end
+        end
+
+        if line:match("%f[%a]end%f[%A]") then
+          local start_pos = vim.fn.searchpairpos(all_start_pat, mid_pat, end_pat, "bnW")
+          if start_pos[1] > 0 then
+            return start_pos[1], cursor[1]
+          end
+        end
+
+        return nil, nil
+      end
+
+      function _send_matching()
+        local orig_pos = vim.api.nvim_win_get_cursor(0)
+        local start_line, end_line
+
+        if vim.bo.filetype == "julia" then
+          start_line, end_line = get_julia_block_range()
+        end
+
+        if start_line and end_line then
+          vim.api.nvim_win_set_cursor(0, { start_line, 0 })
+          vim.cmd("normal! V")
+          vim.api.nvim_win_set_cursor(0, { end_line, 0 })
+          _send_multiple_lines()
+          vim.api.nvim_win_set_cursor(0, orig_pos)
+        else
+          vim.cmd("normal! V%")
+          _send_multiple_lines()
+          vim.api.nvim_win_set_cursor(0, orig_pos)
+        end
       end
     '';
   };
