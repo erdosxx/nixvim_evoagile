@@ -182,7 +182,8 @@ in {
       	R:toggle()
       end
 
-      local is_trim_spaces = true
+      -- Set trim_spaces=false for sending to REPLs for whitespace-sensitive languages like python.
+      local is_trim_spaces = false
       local term_id = 1
       function _send_single_line()
         require("toggleterm").send_lines_to_terminal("single_line", is_trim_spaces, { args = term_id })
