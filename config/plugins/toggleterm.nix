@@ -162,7 +162,16 @@ in {
       	lazygit:toggle()
       end
 
-      local julia = Terminal:new({ cmd = '[ -n "$DEVENV_ROOT" ] && julia --project=. || ${devenv} shell -- julia --project=.', hidden = true, direction = "vertical" })
+      local julia_cmd = 'julia --project=. --load ~/.julia/config/startup_nopair.jl'
+
+      local julia = Terminal:new({cmd = '[ -n "$DEVENV_ROOT" ] && ' .. julia_cmd
+          .. ' || ${devenv} shell -- ' .. julia_cmd,
+        hidden = true,
+        direction = "vertical",
+      })
+
+      -- local julia = Terminal:new({ cmd = '[ -n "$DEVENV_ROOT" ] && julia --project=. --load ~/.julia/config/startup_nopair.jl || ${devenv} shell -- julia --project=. --load ~/.julia/config/startup_nopair.jl', hidden = true, direction = "vertical" })
+
       function _JULIA_TOGGLE()
       	julia:toggle()
       end
